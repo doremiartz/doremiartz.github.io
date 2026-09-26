@@ -1,0 +1,120 @@
+# Configuração do painel de edição Pages CMS (https://pagescms.org)
+# Com isso, você edita o site por formulários, sem mexer em código.
+
+media:
+  input: imagens
+  output: imagens
+
+content:
+  - name: conteudo
+    label: Conteúdo do site
+    type: file
+    path: conteudo.json
+    format: json
+    fields:
+      - name: comissoes
+        label: Status das comissões
+        type: object
+        fields:
+          - { name: abertas, label: "Comissões abertas?", type: boolean }
+          - { name: textoAberto, label: Texto quando abertas, type: string }
+          - { name: textoFechado, label: Texto quando fechadas, type: string }
+
+      - name: artista
+        label: Apresentação (topo do site)
+        type: object
+        fields:
+          - { name: nome, label: Nome, type: string }
+          - { name: descricao, label: Frase principal, type: text }
+          - { name: detalhe, label: Frase secundária, type: string }
+          - { name: imagem, label: Arte de destaque, type: image }
+          - { name: imagemDescricao, label: "Descrição da arte (para leitores de tela)", type: string }
+
+      - name: galeria
+        label: Galeria
+        type: object
+        fields:
+          - { name: etiqueta, label: Etiqueta, type: string }
+          - { name: titulo, label: Título, type: string }
+          - { name: subtitulo, label: Subtítulo, type: text }
+          - name: obras
+            label: Artes
+            type: object
+            list: true
+            fields:
+              - { name: imagem, label: Imagem, type: image }
+              - { name: titulo, label: Título, type: string }
+              - { name: tipo, label: "Tipo (ex.: Render · Halfbody)", type: string }
+              - { name: descricao, label: "Descrição (para leitores de tela)", type: text }
+
+      - name: processo
+        label: Vídeo do processo
+        type: object
+        fields:
+          - { name: etiqueta, label: Etiqueta, type: string }
+          - { name: titulo, label: Título, type: string }
+          - { name: texto, label: Texto, type: text }
+          - { name: video, label: "Vídeo (.mp4)", type: file }
+
+      - name: precos
+        label: Preços
+        type: object
+        fields:
+          - { name: etiqueta, label: Etiqueta, type: string }
+          - { name: titulo, label: Título, type: string }
+          - { name: moeda, label: Moeda, type: string }
+          - name: estilos
+            label: Estilos
+            type: object
+            list: true
+            fields:
+              - { name: nome, label: Nome do estilo, type: string }
+              - { name: descricao, label: Descrição, type: text }
+              - { name: imagem, label: Imagem da tabela, type: image }
+              - name: itens
+                label: Tamanhos e preços
+                type: object
+                list: true
+                fields:
+                  - { name: tipo, label: "Tamanho (Headshot, Halfbody, Fullbody)", type: string }
+                  - { name: preco, label: Preço, type: number }
+
+      - name: avisos
+        label: Avisos
+        type: object
+        fields:
+          - { name: titulo, label: Título, type: string }
+          - name: lista
+            label: Regras
+            type: object
+            list: true
+            fields:
+              - { name: titulo, label: Título, type: string }
+              - { name: texto, label: Texto, type: text }
+              - { name: destaque, label: "Destacar em vermelho?", type: boolean }
+          - { name: naoFacoTitulo, label: "Título do quadro 'Não faço'", type: string }
+          - { name: naoFaco, label: "Não faço (um item por linha)", type: string, list: true }
+          - { name: adicionaisTitulo, label: "Título do quadro 'Adicionais'", type: string }
+          - name: adicionais
+            label: Adicionais
+            type: object
+            list: true
+            fields:
+              - { name: item, label: "Item (ex.: Personagem extra)", type: string }
+              - { name: valor, label: "Valor (ex.: +70% ou a partir de R$ 20)", type: string }
+
+      - name: contato
+        label: Contato
+        type: object
+        fields:
+          - { name: titulo, label: Título, type: string }
+          - { name: subtitulo, label: Subtítulo, type: string }
+          - { name: texto, label: Texto, type: text }
+          - name: redes
+            label: Redes sociais
+            type: object
+            list: true
+            fields:
+              - { name: nome, label: "Nome (Telegram, Instagram, TikTok...)", type: string }
+              - { name: usuario, label: Usuário, type: string }
+              - { name: url, label: Link, type: string }
