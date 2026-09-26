@@ -84,7 +84,7 @@
         (o, i) => `
       <figure class="obra revelar" style="transition-delay:${(i % 2) * 90}ms">
         <button class="obra-botao" type="button" data-grupo="galeria" data-indice="${i}" aria-label="Ampliar: ${esc(o.titulo)}">
-          <img src="${esc(o.imagem)}" alt="${esc(o.descricao || o.titulo)}" loading="lazy" decoding="async">
+          <img src="${esc(o.imagem)}" alt="${esc(o.descricao || o.titulo)}" decoding="async">
         </button>
         <figcaption><span class="obra-titulo">${esc(o.titulo)}</span><span class="obra-tipo">${esc(o.tipo)}</span></figcaption>
       </figure>`
@@ -131,9 +131,14 @@
 
     // avisos
     $("#regras").innerHTML = (d.avisos?.lista || [])
-      .map((r) => `<div>${ESTRELA}<dt>${esc(r.titulo)}</dt><dd>${esc(r.texto)}</dd></div>`)
+      .map((r) => `<div${r.destaque ? ' class="regra-destaque"' : ""}>${ESTRELA}<dt>${esc(r.titulo)}</dt><dd>${esc(r.texto)}</dd></div>`)
       .join("");
     $("#nao-faco").innerHTML = (d.avisos?.naoFaco || []).map((n) => `<li>${esc(n)}</li>`).join("");
+    const adicionais = d.avisos?.adicionais || [];
+    $("#adicionais-quadro").hidden = !adicionais.length;
+    $("#adicionais").innerHTML = adicionais
+      .map((a) => `<li><span>${esc(a.item)}</span><span class="pontilhado"></span><strong>${esc(a.valor)}</strong></li>`)
+      .join("");
 
     // redes
     $("#redes").innerHTML = (d.contato?.redes || [])

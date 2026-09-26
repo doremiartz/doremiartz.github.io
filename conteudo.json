@@ -85,10 +85,17 @@
       { "titulo": "Pagamento", "texto": "50% no rascunho e os outros 50% na entrega final." },
       { "titulo": "Prazo", "texto": "De 1 a 3 semanas para ficar pronto." },
       { "titulo": "Fila", "texto": "Tem prioridade quem pagou antes. Você será avisado quando chegar a sua vez." },
-      { "titulo": "Direito de recusa", "texto": "Posso recusar um pedido se eu não me sentir confortável com ele." }
+      { "titulo": "Direito de recusa", "texto": "Posso recusar um pedido se eu não me sentir confortável com ele." },
+      { "titulo": "Uso de IA", "texto": "Usar minha arte com IA para fins comerciais é absolutamente nojento. Se eu perceber, o cliente será permanentemente banido de comissionar comigo.", "destaque": true }
     ],
     "naoFacoTitulo": "Não faço",
-    "naoFaco": ["Mecha", "Veículos detalhados", "NSFW", "Proship", "Fetiches extremos"]
+    "naoFaco": ["Mecha", "Veículos detalhados", "NSFW", "Proship", "Fetiches extremos"],
+    "adicionaisTitulo": "Adicionais",
+    "adicionais": [
+      { "item": "Personagem extra", "valor": "+70%" },
+      { "item": "Background simples", "valor": "a partir de R$ 20" },
+      { "item": "Background complexo", "valor": "a partir de R$ 80" }
+    ]
   },
   "contato": {
     "titulo": "Contate-me!",
