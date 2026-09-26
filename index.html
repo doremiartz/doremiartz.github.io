@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<title>DoremiArtz</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="DoremiArtz: desenhista digital e tradicional. Comissões de Sketch, Flat Colors e Render, para o mundo todo.">
+<meta name="theme-color" content="#120A1C">
+<meta property="og:title" content="DoremiArtz · Artista digital">
+<meta property="og:description" content="Comissões de Sketch, Flat Colors e Render. Veja os trabalhos e os preços.">
+<meta property="og:image" content="imagens/hero.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23120A1C'/%3E%3Cellipse cx='16' cy='9' rx='10' ry='3.2' fill='none' stroke='%23FFD86B' stroke-width='2'/%3E%3Ctext x='16' y='27' font-family='Georgia,serif' font-size='17' font-weight='700' text-anchor='middle' fill='%23FF3D91'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600&family=Figtree:wght@400;500;600;700&family=Gloock&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<a class="pular" href="#principal">Pular para o conteúdo</a>
+
+<!-- Tudo o que aparece no site vem do arquivo conteudo.json.
+     Para mudar textos, preços, imagens ou links, edite só ele. -->
+
+<header class="topo" id="topo">
+  <div class="topo-dentro">
+    <a class="marca" href="#inicio" aria-label="Início">
+      <svg class="marca-halo" viewBox="0 0 40 12" aria-hidden="true"><ellipse cx="20" cy="6" rx="18" ry="4.2"/></svg>
+      <span data-campo="nome">DoremiArtz</span>
+    </a>
+    <nav class="menu" aria-label="Seções">
+      <a href="#trabalhos">Trabalhos</a>
+      <a href="#processo">Processo</a>
+      <a href="#precos">Preços</a>
+      <a href="#avisos">Avisos</a>
+    </nav>
+    <div class="topo-acoes">
+      <span class="status" data-status><span class="status-ponto"></span><span class="status-texto"></span></span>
+      <a class="botao botao-pequeno" href="#contato">Contato</a>
+    </div>
+  </div>
+</header>
+
+<main id="principal">
+
+  <section class="hero" id="inicio" aria-labelledby="hero-nome">
+    <div class="container hero-grade">
+      <div class="hero-texto">
+        <span class="status status-grande" data-status><span class="status-ponto"></span><span class="status-texto"></span></span>
+        <h1 class="hero-nome" id="hero-nome">
+          <svg class="hero-halo" viewBox="0 0 300 70" aria-hidden="true"><ellipse cx="150" cy="35" rx="140" ry="24" pathLength="1"/><ellipse class="hero-halo-interno" cx="150" cy="35" rx="104" ry="14" pathLength="1"/></svg>
+          <span class="hero-nome-texto"></span>
+        </h1>
+        <p class="hero-descricao" data-campo="descricao"></p>
+        <span class="traco" aria-hidden="true"></span>
+        <p class="hero-detalhe" data-campo="detalhe"></p>
+        <div class="hero-botoes">
+          <a class="botao" href="#precos">Ver preços</a>
+          <a class="botao botao-contorno" href="#trabalhos">Ver trabalhos</a>
+        </div>
+      </div>
+      <div class="hero-arte">
+        <div class="quadro" id="quadro">
+          <img id="hero-imagem" alt="" width="1400" height="1400" fetchpriority="high">
+          <span class="quadro-brilho" aria-hidden="true"></span>
+        </div>
+        <svg class="brilho brilho-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C13 8 16 11 24 12 16 13 13 16 12 24 11 16 8 13 0 12 8 11 11 8 12 0Z"/></svg>
+        <svg class="brilho brilho-2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C13 8 16 11 24 12 16 13 13 16 12 24 11 16 8 13 0 12 8 11 11 8 12 0Z"/></svg>
+        <svg class="brilho brilho-3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C13 8 16 11 24 12 16 13 13 16 12 24 11 16 8 13 0 12 8 11 11 8 12 0Z"/></svg>
+        <span class="adesivo" aria-hidden="true">digital + tradicional</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="faixa" aria-hidden="true"><div class="faixa-trilho" id="faixa"></div></div>
+
+  <section class="secao" id="trabalhos" aria-labelledby="galeria-titulo">
+    <div class="container">
+      <header class="secao-cabeca revelar">
+        <p class="etiqueta" data-campo="galeria.etiqueta"></p>
+        <h2 id="galeria-titulo" data-campo="galeria.titulo"></h2>
+        <p class="secao-sub" data-campo="galeria.subtitulo"></p>
+      </header>
+      <div class="galeria" id="galeria"></div>
+    </div>
+  </section>
+
+  <section class="secao" id="processo" aria-labelledby="processo-titulo">
+    <div class="container processo-grade">
+      <div class="processo-texto revelar">
+        <p class="etiqueta" data-campo="processo.etiqueta"></p>
+        <h2 id="processo-titulo" data-campo="processo.titulo"></h2>
+        <p class="secao-sub" data-campo="processo.texto"></p>
+        <button class="botao botao-contorno" id="video-botao" type="button" aria-pressed="false">Pausar vídeo</button>
+      </div>
+      <div class="video-quadro revelar">
+        <video id="video" muted loop playsinline preload="metadata" aria-label="Vídeo do processo de uma comissão, do rascunho à arte final"></video>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="precos" aria-labelledby="precos-titulo">
+    <div class="container">
+      <header class="secao-cabeca revelar">
+        <p class="etiqueta" data-campo="precos.etiqueta"></p>
+        <h2 id="precos-titulo" data-campo="precos.titulo"></h2>
+        <div class="legenda-tamanhos" id="legenda"></div>
+      </header>
+      <div class="precos" id="lista-precos"></div>
+      <p class="aviso-fechado" id="aviso-fechado" hidden>As comissões estão fechadas no momento. Me siga nas redes para saber quando abrirem.</p>
+    </div>
+  </section>
+
+  <section class="secao" id="avisos" aria-labelledby="avisos-titulo">
+    <div class="container avisos-grade">
+      <div class="revelar">
+        <h2 id="avisos-titulo" data-campo="avisos.titulo"></h2>
+        <dl class="regras" id="regras"></dl>
+      </div>
+      <aside class="nao-faco revelar" aria-labelledby="nao-faco-titulo">
+        <h3 id="nao-faco-titulo" data-campo="avisos.naoFacoTitulo"></h3>
+        <ul id="nao-faco"></ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="secao contato" id="contato" aria-labelledby="contato-titulo">
+    <div class="container contato-grade">
+      <div class="revelar">
+        <h2 class="contato-titulo" id="contato-titulo" data-campo="contato.titulo"></h2>
+        <p class="contato-sub" data-campo="contato.subtitulo"></p>
+        <p class="secao-sub" data-campo="contato.texto"></p>
+      </div>
+      <ul class="redes revelar" id="redes"></ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape">
+  <div class="container rodape-dentro">
+    <p>© <span id="ano"></span> <span data-campo="nome"></span>. Todas as artes pertencem ao artista. Não use sem permissão.</p>
+    <a href="#inicio">Voltar ao topo ↑</a>
+  </div>
+</footer>
+
+<div class="erro" id="erro" hidden>
+  <p><strong>Não consegui carregar o conteúdo.</strong> Confira se o arquivo conteudo.json está na mesma pasta e sem erros de digitação (uma vírgula ou aspas faltando já quebra o arquivo).</p>
+</div>
+
+<dialog class="visor" id="visor" aria-label="Visualizar arte">
+  <button class="visor-fechar" type="button" data-visor="fechar" aria-label="Fechar">✕</button>
+  <button class="visor-seta visor-anterior" type="button" data-visor="anterior" aria-label="Anterior">←</button>
+  <figure>
+    <img id="visor-imagem" alt="">
+    <figcaption><strong id="visor-titulo"></strong> <span id="visor-contador"></span></figcaption>
+  </figure>
+  <button class="visor-seta visor-proxima" type="button" data-visor="proxima" aria-label="Próxima">→</button>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>

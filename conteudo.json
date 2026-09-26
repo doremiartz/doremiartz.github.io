@@ -1,0 +1,103 @@
+{
+  "artista": {
+    "nome": "DoremiArtz",
+    "descricao": "Desenhista digital e tradicional, apenas desenhando por diversão.",
+    "detalhe": "Disponível para o mundo todo · Projetos pessoais e comerciais",
+    "imagem": "imagens/hero.jpg",
+    "imagemDescricao": "Personagem de cabelo azul segurando óculos em forma de estrela, pintura digital de DoremiArtz"
+  },
+  "comissoes": {
+    "abertas": false,
+    "textoAberto": "Comissões abertas",
+    "textoFechado": "Comissões fechadas"
+  },
+  "galeria": {
+    "etiqueta": "Trabalhos selecionados · 2026",
+    "titulo": "Algumas comissões…",
+    "subtitulo": "Uma pequena coleção de artes que eu fiz nesse meio tempo.",
+    "obras": [
+      {
+        "imagem": "imagens/arte-1.jpg",
+        "titulo": "Ritual no acampamento",
+        "tipo": "Render · Cenário completo",
+        "descricao": "Dois personagens em volta de um crânio com velas, num acampamento na floresta ao pôr do sol"
+      },
+      {
+        "imagem": "imagens/arte-2.jpg",
+        "titulo": "Campo nublado",
+        "tipo": "Render · Halfbody",
+        "descricao": "Personagem lobo de mechas roxas no meio do mato alto, com postes de luz ao fundo"
+      },
+      {
+        "imagem": "imagens/arte-3.jpg",
+        "titulo": "Ficha de referência: Brfoda",
+        "tipo": "Ref sheet",
+        "descricao": "Ficha de referência de um personagem gato calico com vistas de frente e costas, paleta de cores e expressões"
+      }
+    ]
+  },
+  "processo": {
+    "etiqueta": "Bastidores",
+    "titulo": "Do rascunho ao final",
+    "texto": "Aqui está o processo de uma comissão que eu fiz. Aprecie!",
+    "video": "imagens/processo.mp4"
+  },
+  "precos": {
+    "etiqueta": "Preços de comissões",
+    "titulo": "Dê forma à sua ideia.",
+    "moeda": "R$",
+    "estilos": [
+      {
+        "nome": "Sketch",
+        "descricao": "Traço a lápis com sombreado em hachura. Rápido e cheio de energia.",
+        "imagem": "imagens/preco-1.jpg",
+        "itens": [
+          { "tipo": "Headshot", "preco": 25 },
+          { "tipo": "Halfbody", "preco": 30 },
+          { "tipo": "Fullbody", "preco": 40 }
+        ]
+      },
+      {
+        "nome": "Flat Colors",
+        "descricao": "Lineart limpa com cores chapadas e sombras simples.",
+        "imagem": "imagens/preco-2.jpg",
+        "itens": [
+          { "tipo": "Headshot", "preco": 40 },
+          { "tipo": "Halfbody", "preco": 55 },
+          { "tipo": "Fullbody", "preco": 75 }
+        ]
+      },
+      {
+        "nome": "Render",
+        "descricao": "Pintura completa com luz, volume e acabamento detalhado.",
+        "imagem": "imagens/preco-3.jpg",
+        "itens": [
+          { "tipo": "Headshot", "preco": 65 },
+          { "tipo": "Halfbody", "preco": 90 },
+          { "tipo": "Fullbody", "preco": 110 }
+        ]
+      }
+    ]
+  },
+  "avisos": {
+    "titulo": "Avisos importantes",
+    "lista": [
+      { "titulo": "Pagamento", "texto": "50% no rascunho e os outros 50% na entrega final." },
+      { "titulo": "Prazo", "texto": "De 1 a 3 semanas para ficar pronto." },
+      { "titulo": "Fila", "texto": "Tem prioridade quem pagou antes. Você será avisado quando chegar a sua vez." },
+      { "titulo": "Direito de recusa", "texto": "Posso recusar um pedido se eu não me sentir confortável com ele." }
+    ],
+    "naoFacoTitulo": "Não faço",
+    "naoFaco": ["Mecha", "Veículos detalhados", "NSFW", "Proship", "Fetiches extremos"]
+  },
+  "contato": {
+    "titulo": "Contate-me!",
+    "subtitulo": "Vamos dar vida à sua imaginação.",
+    "texto": "Me mande uma mensagem e te respondo em até 1 semana. A gente conversa sobre a sua ideia, prazos e o que mais precisar.",
+    "redes": [
+      { "nome": "Telegram", "usuario": "@Doremikkj", "url": "https://t.me/Doremikkj" },
+      { "nome": "Instagram", "usuario": "@doremi.artz", "url": "https://www.instagram.com/doremi.artz" },
+      { "nome": "TikTok", "usuario": "@doremiartz", "url": "https://www.tiktok.com/@doremiartz" }
+    ]
+  }
+}
