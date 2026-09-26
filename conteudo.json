@@ -11,6 +11,17 @@
     "textoAberto": "Comissões abertas",
     "textoFechado": "Comissões fechadas"
   },
+  "sobre": {
+    "etiqueta": "Sobre",
+    "titulo": "Prazer, eu sou Doremi!",
+    "texto": [
+      "Sou um artista brasileiro que desenha no digital e no tradicional, principalmente por diversão. Desenhar é o que eu mais gosto de fazer, e cada comissão é uma chance de dar vida ao personagem de outra pessoa.",
+      "Gosto de personagens com personalidade forte, de cenas com luz marcante e de transitar entre o fofo e o sombrio. Aceito pedidos de qualquer lugar do mundo, para projetos pessoais ou comerciais."
+    ],
+    "destaques": ["Artista brasileiro", "Digital + tradicional", "Sketch, Flat Colors e Render", "Atendo o mundo todo"],
+    "imagem": "compartilhar.jpg",
+    "imagemDescricao": "Rascunho de um personagem acenando e dizendo Hello :D"
+  },
   "galeria": {
     "etiqueta": "Trabalhos selecionados · 2026",
     "titulo": "Algumas comissões…",
@@ -19,20 +30,52 @@
       {
         "imagem": "imagens/arte-1.jpg",
         "titulo": "Ritual no acampamento",
-        "tipo": "Render · Cenário completo",
-        "descricao": "Dois personagens em volta de um crânio com velas, num acampamento na floresta ao pôr do sol"
+        "descricao": "Dois personagens em volta de um crânio com velas, num acampamento na floresta ao pôr do sol",
+        "estilo": "Render",
+        "tamanho": "Halfbody",
+        "personagensExtras": 1,
+        "background": "complexo",
+        "precoManual": ""
       },
       {
         "imagem": "imagens/arte-2.jpg",
         "titulo": "Campo nublado",
-        "tipo": "Render · Halfbody",
-        "descricao": "Personagem lobo de mechas roxas no meio do mato alto, com postes de luz ao fundo"
+        "descricao": "Personagem lobo de mechas roxas no meio do mato alto, com postes de luz ao fundo",
+        "estilo": "Render",
+        "tamanho": "Halfbody",
+        "personagensExtras": 0,
+        "background": "complexo",
+        "precoManual": ""
+      },
+      {
+        "imagem": "imagens/arte-5.webp",
+        "titulo": "Sorriso afiado",
+        "descricao": "Retrato de um personagem de pelo preto com laço roxo, sorrindo com dentes afiados e sangue na boca",
+        "estilo": "Render",
+        "tamanho": "Headshot",
+        "personagensExtras": 0,
+        "background": "simples",
+        "precoManual": ""
+      },
+      {
+        "imagem": "imagens/arte-4.webp",
+        "titulo": "Dia de praia",
+        "descricao": "Personagem de pelo branco com mechas magenta apontando para o mar numa praia ensolarada",
+        "estilo": "Render",
+        "tamanho": "Fullbody",
+        "personagensExtras": 0,
+        "background": "complexo",
+        "precoManual": ""
       },
       {
         "imagem": "imagens/arte-3.jpg",
         "titulo": "Ficha de referência: Brfoda",
-        "tipo": "Ref sheet",
-        "descricao": "Ficha de referência de um personagem gato calico com vistas de frente e costas, paleta de cores e expressões"
+        "descricao": "Ficha de referência de um personagem gato calico com vistas de frente e costas, paleta de cores e expressões",
+        "estilo": "Ref sheet",
+        "tamanho": "",
+        "personagensExtras": 0,
+        "background": "nenhum",
+        "precoManual": ""
       }
     ]
   },
@@ -77,25 +120,25 @@
           { "tipo": "Fullbody", "preco": 110 }
         ]
       }
-    ]
+    ],
+    "extras": {
+      "personagemExtraPorcento": 70,
+      "backgroundSimples": 20,
+      "backgroundComplexo": 80
+    }
   },
   "avisos": {
     "titulo": "Avisos importantes",
     "lista": [
-      { "titulo": "Pagamento", "texto": "50% no rascunho e os outros 50% na entrega final." },
-      { "titulo": "Prazo", "texto": "De 1 a 3 semanas para ficar pronto." },
-      { "titulo": "Fila", "texto": "Tem prioridade quem pagou antes. Você será avisado quando chegar a sua vez." },
-      { "titulo": "Direito de recusa", "texto": "Posso recusar um pedido se eu não me sentir confortável com ele." },
+      { "titulo": "Pagamento", "texto": "50% no rascunho e os outros 50% na entrega final.", "destaque": false },
+      { "titulo": "Prazo", "texto": "De 1 a 3 semanas para ficar pronto.", "destaque": false },
+      { "titulo": "Fila", "texto": "Tem prioridade quem pagou antes. Você será avisado quando chegar a sua vez.", "destaque": false },
+      { "titulo": "Direito de recusa", "texto": "Posso recusar um pedido se eu não me sentir confortável com ele.", "destaque": false },
       { "titulo": "Uso de IA", "texto": "Usar minha arte com IA para fins comerciais é absolutamente nojento. Se eu perceber, o cliente será permanentemente banido de comissionar comigo.", "destaque": true }
     ],
     "naoFacoTitulo": "Não faço",
     "naoFaco": ["Mecha", "Veículos detalhados", "NSFW", "Proship", "Fetiches extremos"],
-    "adicionaisTitulo": "Adicionais",
-    "adicionais": [
-      { "item": "Personagem extra", "valor": "+70%" },
-      { "item": "Background simples", "valor": "a partir de R$ 20" },
-      { "item": "Background complexo", "valor": "a partir de R$ 80" }
-    ]
+    "adicionaisTitulo": "Adicionais"
   },
   "contato": {
     "titulo": "Contate-me!",

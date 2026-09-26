@@ -4,7 +4,8 @@
 
 | Arquivo | Para que serve | Precisa mexer? |
 |---|---|---|
-| `conteudo.json` | **Todos os textos, preços, imagens, links e o status das comissões** | Sim, é aqui que você edita |
+| `conteudo.json` | **Todos os textos (em português), preços, imagens, links e o status das comissões** | Sim, é aqui que você edita |
+| `traducoes.json` | Textos em inglês e espanhol | Só quando mudar um texto e quiser traduzir |
 | `imagens/` | Artes, tabelas de preço, fundo e vídeo | Só para adicionar ou trocar arquivos |
 | `.pages.yml` | Configura o painel de edição visual (Pages CMS) | Não |
 | `index.html`, `estilo.css`, `script.js` | Estrutura, visual e animações | Não (cores ficam no topo do `estilo.css`) |
@@ -52,12 +53,33 @@ Abra `conteudo.json` no GitHub, clique no lápis (✏️), edite e clique em **C
 {
   "imagem": "imagens/minha-arte-nova.jpg",
   "titulo": "Nome da arte",
-  "tipo": "Flat Colors · Fullbody",
-  "descricao": "O que aparece na imagem, para quem usa leitor de tela"
+  "descricao": "O que aparece na imagem, para quem usa leitor de tela",
+  "estilo": "Flat Colors",
+  "tamanho": "Fullbody",
+  "personagensExtras": 0,
+  "background": "simples",
+  "precoManual": ""
 }
 ```
 
-Artes deitadas (mais largas que altas) ocupam a linha inteira automaticamente.
+- **Preço estimado:** o site calcula sozinho com a tabela de preços: preço do estilo + tamanho, mais 70% por personagem extra, mais o background (`"nenhum"`, `"simples"` ou `"complexo"`). Se você mudar um preço na tabela, as estimativas mudam junto.
+- Se `estilo` não existir na tabela (ex.: `"Ref sheet"`), aparece **"sob consulta"**.
+- Para escrever um valor na mão, preencha `precoManual` (ex.: `"R$ 150"`). Ele substitui a estimativa.
+- A galeria monta as linhas sozinha, deixando as artes de cada linha com a mesma altura. A ordem na lista é a ordem no site.
+
+**Mudar os adicionais (personagem extra e backgrounds):** ficam em `"precos" → "extras"`. Mudou ali, muda no quadro "Adicionais" e nas estimativas.
+
+---
+
+## Idiomas (português, inglês e espanhol)
+
+O site abre no idioma do navegador do visitante: português para Brasil e Portugal, espanhol para países de língua espanhola e inglês para o resto do mundo. O visitante também pode trocar no seletor **PT / EN / ES** no topo.
+
+- O **português** fica no `conteudo.json` (é o que você edita no painel).
+- O **inglês e o espanhol** ficam no `traducoes.json`, em `"conteudo" → "en"` e `"es"`. Cada lista segue a mesma ordem do português (a 1ª arte traduzida é a 1ª arte da galeria, e assim por diante).
+- Se algo não estiver traduzido, o site mostra em português. Então, ao adicionar uma arte nova, ela aparece em português para todo mundo até você adicionar a tradução.
+- Preços, imagens e links vêm sempre do `conteudo.json`. Não precisa repetir nas traduções.
+- Para testar um idioma: `https://doremiartz.github.io/?lang=en` (ou `?lang=es`, `?lang=pt`).
 
 **Cuidados com o JSON:** cada item de uma lista é separado por vírgula, mas o último não leva vírgula depois. Textos ficam sempre entre aspas `" "`. Se o site mostrar "Não consegui carregar o conteúdo", quase sempre é uma vírgula ou aspas sobrando/faltando. Cole o arquivo em **jsonlint.com** para achar o erro.
 

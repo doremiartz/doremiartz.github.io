@@ -1,0 +1,256 @@
+{
+  "idiomas": [
+    { "codigo": "pt", "nome": "Português", "sigla": "PT" },
+    { "codigo": "en", "nome": "English", "sigla": "EN" },
+    { "codigo": "es", "nome": "Español", "sigla": "ES" }
+  ],
+  "padrao": "en",
+
+  "interface": {
+    "pt": {
+      "pular": "Pular para o conteúdo",
+      "inicio": "Início",
+      "secoes": "Seções",
+      "menu_sobre": "Sobre",
+      "menu_trabalhos": "Trabalhos",
+      "menu_processo": "Processo",
+      "menu_precos": "Preços",
+      "menu_avisos": "Avisos",
+      "contato": "Contato",
+      "idioma": "Idioma",
+      "ver_precos": "Ver preços",
+      "ver_trabalhos": "Ver trabalhos",
+      "adesivo": "digital + tradicional",
+      "faixa_mundo": "Comissões para o mundo todo",
+      "ampliar": "Ampliar ↗",
+      "ampliar_aria": "Ampliar: {titulo}",
+      "estimativa": "estimativa",
+      "a_partir_de": "a partir de",
+      "sob_consulta": "sob consulta",
+      "estimativa_nota": "O valor em cada arte é uma estimativa com base na tabela de preços. O preço final depende do seu pedido.",
+      "personagem_extra": "Personagem extra",
+      "bg_simples": "Background simples",
+      "bg_complexo": "Background complexo",
+      "timelapse": "Timelapse",
+      "pausar_video": "Pausar vídeo",
+      "reproduzir_video": "Reproduzir vídeo",
+      "video_aria": "Vídeo do processo de uma comissão, do rascunho à arte final",
+      "ver_tabela_aria": "Ver tabela de {nome} em tamanho grande",
+      "tabela_alt": "Tabela de preços {nome}",
+      "aviso_fechado": "As comissões estão fechadas no momento. Me siga nas redes para saber quando abrirem.",
+      "moeda_nota": "",
+      "direitos": "Todas as artes pertencem ao artista. Não use sem permissão.",
+      "voltar_topo": "Voltar ao topo ↑",
+      "visor": "Visualizar arte",
+      "fechar": "Fechar",
+      "anterior": "Anterior",
+      "proxima": "Próxima"
+    },
+    "en": {
+      "pular": "Skip to content",
+      "inicio": "Home",
+      "secoes": "Sections",
+      "menu_sobre": "About",
+      "menu_trabalhos": "Work",
+      "menu_processo": "Process",
+      "menu_precos": "Prices",
+      "menu_avisos": "Notes",
+      "contato": "Contact",
+      "idioma": "Language",
+      "ver_precos": "See prices",
+      "ver_trabalhos": "See work",
+      "adesivo": "digital + traditional",
+      "faixa_mundo": "Commissions worldwide",
+      "ampliar": "Enlarge ↗",
+      "ampliar_aria": "Enlarge: {titulo}",
+      "estimativa": "estimate",
+      "a_partir_de": "from",
+      "sob_consulta": "price on request",
+      "estimativa_nota": "The price on each piece is an estimate based on the price list. The final price depends on your request.",
+      "personagem_extra": "Extra character",
+      "bg_simples": "Simple background",
+      "bg_complexo": "Complex background",
+      "timelapse": "Timelapse",
+      "pausar_video": "Pause video",
+      "reproduzir_video": "Play video",
+      "video_aria": "Video of a commission's process, from sketch to final art",
+      "ver_tabela_aria": "View the {nome} price sheet in full size",
+      "tabela_alt": "{nome} price sheet",
+      "aviso_fechado": "Commissions are closed right now. Follow me on social media to know when they open.",
+      "moeda_nota": "Prices in Brazilian reais (R$ / BRL).",
+      "direitos": "All artwork belongs to the artist. Do not use without permission.",
+      "voltar_topo": "Back to top ↑",
+      "visor": "View artwork",
+      "fechar": "Close",
+      "anterior": "Previous",
+      "proxima": "Next"
+    },
+    "es": {
+      "pular": "Saltar al contenido",
+      "inicio": "Inicio",
+      "secoes": "Secciones",
+      "menu_sobre": "Sobre mí",
+      "menu_trabalhos": "Trabajos",
+      "menu_processo": "Proceso",
+      "menu_precos": "Precios",
+      "menu_avisos": "Avisos",
+      "contato": "Contacto",
+      "idioma": "Idioma",
+      "ver_precos": "Ver precios",
+      "ver_trabalhos": "Ver trabajos",
+      "adesivo": "digital + tradicional",
+      "faixa_mundo": "Comisiones para todo el mundo",
+      "ampliar": "Ampliar ↗",
+      "ampliar_aria": "Ampliar: {titulo}",
+      "estimativa": "estimación",
+      "a_partir_de": "desde",
+      "sob_consulta": "a consultar",
+      "estimativa_nota": "El valor en cada arte es una estimación basada en la tabla de precios. El precio final depende de tu pedido.",
+      "personagem_extra": "Personaje extra",
+      "bg_simples": "Fondo simple",
+      "bg_complexo": "Fondo complejo",
+      "timelapse": "Timelapse",
+      "pausar_video": "Pausar video",
+      "reproduzir_video": "Reproducir video",
+      "video_aria": "Video del proceso de una comisión, del boceto al arte final",
+      "ver_tabela_aria": "Ver la tabla de {nome} en tamaño grande",
+      "tabela_alt": "Tabla de precios {nome}",
+      "aviso_fechado": "Las comisiones están cerradas por ahora. Sígueme en redes para saber cuándo abren.",
+      "moeda_nota": "Precios en reales brasileños (R$ / BRL).",
+      "direitos": "Todas las artes pertenecen al artista. No las uses sin permiso.",
+      "voltar_topo": "Volver arriba ↑",
+      "visor": "Ver arte",
+      "fechar": "Cerrar",
+      "anterior": "Anterior",
+      "proxima": "Siguiente"
+    }
+  },
+
+  "conteudo": {
+    "en": {
+      "artista": {
+        "descricao": "Digital and traditional artist, just drawing for fun.",
+        "detalhe": "Available worldwide · Personal and commercial projects",
+        "imagemDescricao": "Blue-haired character holding star-shaped glasses, digital painting by DoremiArtz"
+      },
+      "comissoes": { "textoAberto": "Commissions open", "textoFechado": "Commissions closed" },
+      "sobre": {
+        "etiqueta": "About",
+        "titulo": "Nice to meet you, I'm Doremi!",
+        "texto": [
+          "I'm a Brazilian artist who draws both digitally and traditionally, mostly for fun. Drawing is what I love doing most, and every commission is a chance to bring someone else's character to life.",
+          "I love characters with strong personalities, scenes with striking light, and moving between cute and dark. I take requests from anywhere in the world, for personal or commercial projects."
+        ],
+        "destaques": ["Brazilian artist", "Digital + traditional", "Sketch, Flat Colors and Render", "Working worldwide"],
+        "imagemDescricao": "Sketch of a character waving and saying Hello :D"
+      },
+      "galeria": {
+        "etiqueta": "Selected work · 2026",
+        "titulo": "Some commissions…",
+        "subtitulo": "A small collection of pieces I made along the way.",
+        "obras": [
+          { "titulo": "Campfire ritual", "descricao": "Two characters around a skull with candles, at a forest campsite at sunset" },
+          { "titulo": "Cloudy field", "descricao": "Wolf character with purple streaks in tall grass, with power lines in the background" },
+          { "titulo": "Sharp grin", "descricao": "Portrait of a black-furred character with a purple bow, grinning with sharp teeth and blood on the mouth" },
+          { "titulo": "Beach day", "descricao": "White-furred character with magenta streaks pointing at the sea on a sunny beach" },
+          { "titulo": "Reference sheet: Brfoda", "descricao": "Reference sheet of a calico cat character with front and back views, color palette and expressions" }
+        ]
+      },
+      "processo": {
+        "etiqueta": "Behind the scenes",
+        "titulo": "From sketch to final",
+        "texto": "Here's the process of a commission I made. Enjoy!"
+      },
+      "precos": {
+        "etiqueta": "Commission prices",
+        "titulo": "Give shape to your idea.",
+        "estilos": [
+          { "descricao": "Pencil lines with hatched shading. Quick and full of energy." },
+          { "descricao": "Clean lineart with flat colors and simple shading." },
+          { "descricao": "Fully painted with light, volume and a detailed finish." }
+        ]
+      },
+      "avisos": {
+        "titulo": "Important notes",
+        "lista": [
+          { "titulo": "Payment", "texto": "50% at the sketch stage and the other 50% on final delivery." },
+          { "titulo": "Deadline", "texto": "1 to 3 weeks to finish." },
+          { "titulo": "Queue", "texto": "Whoever pays first gets priority. You'll be notified when it's your turn." },
+          { "titulo": "Right to refuse", "texto": "I may turn down a request if I'm not comfortable with it." },
+          { "titulo": "AI use", "texto": "Using my art with AI for commercial purposes is absolutely disgusting. If I notice it, the client will be permanently banned from commissioning me." }
+        ],
+        "naoFacoTitulo": "I don't draw",
+        "naoFaco": ["Mecha", "Detailed vehicles", "NSFW", "Proship", "Extreme fetishes"],
+        "adicionaisTitulo": "Add-ons"
+      },
+      "contato": {
+        "titulo": "Contact me!",
+        "subtitulo": "Let's bring your imagination to life.",
+        "texto": "Send me a message and I'll reply within 1 week. We'll talk about your idea, deadlines and anything else you need."
+      }
+    },
+
+    "es": {
+      "artista": {
+        "descricao": "Artista digital y tradicional, simplemente dibujando por diversión.",
+        "detalhe": "Disponible para todo el mundo · Proyectos personales y comerciales",
+        "imagemDescricao": "Personaje de cabello azul sosteniendo gafas en forma de estrella, pintura digital de DoremiArtz"
+      },
+      "comissoes": { "textoAberto": "Comisiones abiertas", "textoFechado": "Comisiones cerradas" },
+      "sobre": {
+        "etiqueta": "Sobre mí",
+        "titulo": "¡Mucho gusto, soy Doremi!",
+        "texto": [
+          "Soy un artista brasileño que dibuja en digital y en tradicional, principalmente por diversión. Dibujar es lo que más me gusta hacer, y cada comisión es una oportunidad de darle vida al personaje de otra persona.",
+          "Me gustan los personajes con personalidad fuerte, las escenas con luz marcada y moverme entre lo tierno y lo oscuro. Acepto pedidos de cualquier parte del mundo, para proyectos personales o comerciales."
+        ],
+        "destaques": ["Artista brasileño", "Digital + tradicional", "Sketch, Flat Colors y Render", "Atiendo a todo el mundo"],
+        "imagemDescricao": "Boceto de un personaje saludando y diciendo Hello :D"
+      },
+      "galeria": {
+        "etiqueta": "Trabajos seleccionados · 2026",
+        "titulo": "Algunas comisiones…",
+        "subtitulo": "Una pequeña colección de artes que hice en este tiempo.",
+        "obras": [
+          { "titulo": "Ritual en el campamento", "descricao": "Dos personajes alrededor de un cráneo con velas, en un campamento en el bosque al atardecer" },
+          { "titulo": "Campo nublado", "descricao": "Personaje lobo con mechones morados entre la hierba alta, con postes de luz al fondo" },
+          { "titulo": "Sonrisa afilada", "descricao": "Retrato de un personaje de pelaje negro con un lazo morado, sonriendo con dientes afilados y sangre en la boca" },
+          { "titulo": "Día de playa", "descricao": "Personaje de pelaje blanco con mechones magenta señalando el mar en una playa soleada" },
+          { "titulo": "Hoja de referencia: Brfoda", "descricao": "Hoja de referencia de un personaje gato calicó con vistas de frente y espalda, paleta de colores y expresiones" }
+        ]
+      },
+      "processo": {
+        "etiqueta": "Detrás de escena",
+        "titulo": "Del boceto al final",
+        "texto": "Aquí está el proceso de una comisión que hice. ¡Disfrútalo!"
+      },
+      "precos": {
+        "etiqueta": "Precios de comisiones",
+        "titulo": "Dale forma a tu idea.",
+        "estilos": [
+          { "descricao": "Trazo a lápiz con sombreado en tramado. Rápido y lleno de energía." },
+          { "descricao": "Lineart limpio con colores planos y sombras simples." },
+          { "descricao": "Pintura completa con luz, volumen y acabado detallado." }
+        ]
+      },
+      "avisos": {
+        "titulo": "Avisos importantes",
+        "lista": [
+          { "titulo": "Pago", "texto": "50% en el boceto y el otro 50% en la entrega final." },
+          { "titulo": "Plazo", "texto": "De 1 a 3 semanas para estar listo." },
+          { "titulo": "Cola", "texto": "Tiene prioridad quien pagó primero. Te avisaré cuando sea tu turno." },
+          { "titulo": "Derecho a rechazar", "texto": "Puedo rechazar un pedido si no me siento cómodo con él." },
+          { "titulo": "Uso de IA", "texto": "Usar mi arte con IA con fines comerciales es absolutamente asqueroso. Si lo noto, el cliente quedará vetado permanentemente para encargarme comisiones." }
+        ],
+        "naoFacoTitulo": "No hago",
+        "naoFaco": ["Mecha", "Vehículos detallados", "NSFW", "Proship", "Fetiches extremos"],
+        "adicionaisTitulo": "Adicionales"
+      },
+      "contato": {
+        "titulo": "¡Contáctame!",
+        "subtitulo": "Demos vida a tu imaginación.",
+        "texto": "Envíame un mensaje y te respondo en hasta 1 semana. Hablamos sobre tu idea, plazos y lo que necesites."
+      }
+    }
+  }
+}
