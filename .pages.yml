@@ -30,6 +30,17 @@ content:
           - { name: imagem, label: Arte de destaque, type: image }
           - { name: imagemDescricao, label: "Descrição da arte (para leitores de tela)", type: string }
 
+      - name: sobre
+        label: Sobre (biografia)
+        type: object
+        fields:
+          - { name: etiqueta, label: Etiqueta, type: string }
+          - { name: titulo, label: Título, type: string }
+          - { name: texto, label: "Parágrafos da biografia", type: text, list: true }
+          - { name: destaques, label: "Destaques (etiquetas curtas)", type: string, list: true }
+          - { name: imagem, label: Imagem, type: image }
+          - { name: imagemDescricao, label: "Descrição da imagem (para leitores de tela)", type: string }
+
       - name: galeria
         label: Galeria
         type: object
@@ -38,14 +49,28 @@ content:
           - { name: titulo, label: Título, type: string }
           - { name: subtitulo, label: Subtítulo, type: text }
           - name: obras
-            label: Artes
+            label: "Artes (o preço estimado é calculado sozinho pela tabela de preços)"
             type: object
             list: true
             fields:
               - { name: imagem, label: Imagem, type: image }
               - { name: titulo, label: Título, type: string }
-              - { name: tipo, label: "Tipo (ex.: Render · Halfbody)", type: string }
               - { name: descricao, label: "Descrição (para leitores de tela)", type: text }
+              - name: estilo
+                label: "Estilo (igual ao nome na tabela de preços; outro valor = 'sob consulta')"
+                type: string
+              - name: tamanho
+                label: Tamanho
+                type: select
+                options:
+                  values: ["", "Headshot", "Halfbody", "Fullbody"]
+              - { name: personagensExtras, label: Personagens extras, type: number }
+              - name: background
+                label: Background
+                type: select
+                options:
+                  values: ["nenhum", "simples", "complexo"]
+              - { name: precoManual, label: "Preço manual (opcional; se preencher, substitui a estimativa. Ex.: R$ 150)", type: string }
 
       - name: processo
         label: Vídeo do processo
@@ -78,6 +103,13 @@ content:
                 fields:
                   - { name: tipo, label: "Tamanho (Headshot, Halfbody, Fullbody)", type: string }
                   - { name: preco, label: Preço, type: number }
+          - name: extras
+            label: "Adicionais (aparecem no quadro 'Adicionais' e entram no preço estimado)"
+            type: object
+            fields:
+              - { name: personagemExtraPorcento, label: "Personagem extra (% a mais)", type: number }
+              - { name: backgroundSimples, label: "Background simples (a partir de)", type: number }
+              - { name: backgroundComplexo, label: "Background complexo (a partir de)", type: number }
 
       - name: avisos
         label: Avisos
@@ -94,14 +126,7 @@ content:
               - { name: destaque, label: "Destacar em vermelho?", type: boolean }
           - { name: naoFacoTitulo, label: "Título do quadro 'Não faço'", type: string }
           - { name: naoFaco, label: "Não faço (um item por linha)", type: string, list: true }
-          - { name: adicionaisTitulo, label: "Título do quadro 'Adicionais'", type: string }
-          - name: adicionais
-            label: Adicionais
-            type: object
-            list: true
-            fields:
-              - { name: item, label: "Item (ex.: Personagem extra)", type: string }
-              - { name: valor, label: "Valor (ex.: +70% ou a partir de R$ 20)", type: string }
+          - { name: adicionaisTitulo, label: "Título do quadro 'Adicionais' (os valores ficam em Preços → Adicionais)", type: string }
 
       - name: contato
         label: Contato
