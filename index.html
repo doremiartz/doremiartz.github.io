@@ -26,7 +26,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600&family=Figtree:wght@400;500;600;700&family=Gloock&display=swap">
-<link rel="stylesheet" href="estilo.css">
+<!-- o "?v=" força os navegadores a baixar a versão nova; aumente o número quando mudar o CSS ou o JS -->
+<link rel="stylesheet" href="estilo.css?v=3">
 </head>
 <body>
 
@@ -163,6 +164,8 @@
   </div>
 </footer>
 
+<div class="luz-cursor" id="luz-cursor" aria-hidden="true"></div>
+
 <div class="erro" id="erro" hidden>
   <p><strong>Não consegui carregar o conteúdo.</strong> Confira se o arquivo conteudo.json está na mesma pasta e sem erros de digitação (uma vírgula ou aspas faltando já quebra o arquivo).</p>
 </div>
@@ -177,6 +180,6 @@
   <button class="visor-seta visor-proxima" type="button" data-visor="proxima" aria-label="Próxima">→</button>
 </dialog>
 
-<script src="script.js"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>

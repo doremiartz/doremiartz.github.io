@@ -64,6 +64,16 @@
       .map((letra, i) => `<span class="letra${corte > 0 && i >= corte ? " destaque" : ""}" style="--i:${i}" aria-hidden="true">${letra === " " ? "&nbsp;" : esc(letra)}</span>`)
       .join("");
 
+    // mede a largura real do nome para ele sempre caber na coluna
+    const medirNome = () => {
+      const h1 = $("#hero-nome");
+      const texto = $(".hero-nome-texto");
+      const fonte = parseFloat(getComputedStyle(h1).fontSize);
+      if (fonte && texto.offsetWidth) h1.style.setProperty("--razao", (texto.offsetWidth / fonte).toFixed(3));
+    };
+    medirNome();
+    document.fonts?.ready.then(medirNome);
+
     const hero = $("#hero-imagem");
     hero.src = d.artista.imagem;
     hero.alt = d.artista.imagemDescricao || "";
@@ -301,6 +311,49 @@
       quadro.style.setProperty("--rx", "0deg");
       quadro.style.setProperty("--ry", "0deg");
     });
+  }
+
+  /* ---------------- luz que segue o mouse ---------------- */
+
+  const luz = $("#luz-cursor");
+  if (matchMedia("(pointer: fine)").matches) {
+    let alvoX = innerWidth / 2, alvoY = innerHeight / 2;
+    let x = alvoX, y = alvoY, escala = 1, alvoEscala = 1;
+    let rodando = false;
+
+    const passo = () => {
+      // com "menos movimento" ativado, a luz vai direto para o mouse
+      const f = semMovimento ? 1 : 0.18;
+      x += (alvoX - x) * f;
+      y += (alvoY - y) * f;
+      escala += (alvoEscala - escala) * (semMovimento ? 1 : 0.2);
+      luz.style.setProperty("--lx", `${x}px`);
+      luz.style.setProperty("--ly", `${y}px`);
+      luz.style.setProperty("--ls", escala.toFixed(3));
+      const parado = Math.abs(alvoX - x) < 0.3 && Math.abs(alvoY - y) < 0.3 && Math.abs(alvoEscala - escala) < 0.002;
+      rodando = !parado;
+      if (rodando) requestAnimationFrame(passo);
+    };
+    const animar = () => { if (!rodando) { rodando = true; requestAnimationFrame(passo); } };
+
+    addEventListener("pointermove", (ev) => {
+      if (ev.pointerType !== "mouse") return;
+      if (!luz.classList.contains("ativa")) { x = ev.clientX; y = ev.clientY; }
+      alvoX = ev.clientX;
+      alvoY = ev.clientY;
+      luz.classList.add("ativa");
+      animar();
+    }, { passive: true });
+    addEventListener("pointerdown", (ev) => {
+      if (ev.pointerType !== "mouse") return;
+      luz.classList.add("clicando");
+      alvoEscala = 0.82;
+      animar();
+    });
+    const soltar = () => { luz.classList.remove("clicando"); alvoEscala = 1; animar(); };
+    addEventListener("pointerup", soltar);
+    addEventListener("blur", soltar);
+    document.documentElement.addEventListener("mouseleave", () => luz.classList.remove("ativa"));
   }
 
   /* ---------------- carregar conteúdo ---------------- */
