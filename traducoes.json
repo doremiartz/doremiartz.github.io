@@ -58,7 +58,9 @@
       "pedido_ideia": "Conte sua ideia (opcional)",
       "pedido_ideia_exemplo": "Ex.: meu OC de cabelo roxo segurando uma espada, num pôr do sol…",
       "pedido_resumo": "Seu pedido",
-      "pedido_total": "Estimativa",
+      "pedido_total": "Valor estimado",
+      "aviso_estimativa_titulo": "Isto é uma estimativa",
+      "aviso_estimativa_texto": "Os valores do site são aproximados, só para você ter uma ideia. O preço final depende dos detalhes do seu pedido e é sempre combinado com o Doremi antes de começar.",
       "pedido_nota": "Valor aproximado. O preço final é combinado com o artista.",
       "pedido_pagamento": "Pagamento:",
       "pedido_fechado": "As comissões estão fechadas agora. Guarde seu pedido e envie quando abrirem!",
@@ -76,7 +78,7 @@
       "msg_fundo_simples": "Simples",
       "msg_fundo_complexo": "Complexo",
       "msg_ideia": "Ideia",
-      "msg_estimativa": "Estimativa do site"
+      "msg_estimativa": "Estimativa do site (valor aproximado)"
     },
     "en": {
       "pular": "Skip to content",
@@ -129,7 +131,9 @@
       "pedido_ideia": "Tell me your idea (optional)",
       "pedido_ideia_exemplo": "E.g.: my purple-haired OC holding a sword at sunset…",
       "pedido_resumo": "Your order",
-      "pedido_total": "Estimate",
+      "pedido_total": "Estimated price",
+      "aviso_estimativa_titulo": "This is an estimate",
+      "aviso_estimativa_texto": "Prices on the site are approximate, just to give you an idea. The final price depends on the details of your request and is always agreed with Doremi before starting.",
       "pedido_nota": "Approximate price. The final price is agreed with the artist.",
       "pedido_pagamento": "Payment:",
       "pedido_fechado": "Commissions are closed right now. Save your order and send it when they open!",
@@ -147,7 +151,7 @@
       "msg_fundo_simples": "Simple",
       "msg_fundo_complexo": "Complex",
       "msg_ideia": "Idea",
-      "msg_estimativa": "Website estimate"
+      "msg_estimativa": "Website estimate (approximate)"
     },
     "es": {
       "pular": "Saltar al contenido",
@@ -200,7 +204,9 @@
       "pedido_ideia": "Cuéntame tu idea (opcional)",
       "pedido_ideia_exemplo": "Ej.: mi OC de cabello morado sosteniendo una espada, al atardecer…",
       "pedido_resumo": "Tu pedido",
-      "pedido_total": "Estimación",
+      "pedido_total": "Valor estimado",
+      "aviso_estimativa_titulo": "Esto es una estimación",
+      "aviso_estimativa_texto": "Los valores del sitio son aproximados, solo para que tengas una idea. El precio final depende de los detalles de tu pedido y siempre se acuerda con Doremi antes de empezar.",
       "pedido_nota": "Valor aproximado. El precio final se acuerda con el artista.",
       "pedido_pagamento": "Pago:",
       "pedido_fechado": "Las comisiones están cerradas ahora. ¡Guarda tu pedido y envíalo cuando abran!",
@@ -218,7 +224,7 @@
       "msg_fundo_simples": "Simple",
       "msg_fundo_complexo": "Complejo",
       "msg_ideia": "Idea",
-      "msg_estimativa": "Estimación del sitio"
+      "msg_estimativa": "Estimación del sitio (aproximada)"
     }
   },
 

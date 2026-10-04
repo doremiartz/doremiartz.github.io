@@ -627,6 +627,20 @@ p { margin: 0; }
 
 .precos-chamada { margin-top: 32px; display: flex; justify-content: center; }
 
+/* aviso "isto é uma estimativa" (galeria e resumo do pedido) */
+.aviso-estimativa {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 216, 107, .1);
+  border: 1px solid rgba(255, 216, 107, .45);
+  color: var(--creme);
+}
+.aviso-estimativa svg { width: 22px; height: 22px; flex: none; margin-top: 1px; fill: none; stroke: var(--halo); stroke-width: 2; stroke-linecap: round; }
+.aviso-estimativa strong { display: block; color: var(--halo); font-weight: 700; margin-bottom: 2px; }
+.aviso-estimativa p { margin: 0; font-size: .92rem; line-height: 1.5; color: var(--creme); opacity: .9; }
+#trabalhos .aviso-estimativa { max-width: 720px; margin: -20px 0 clamp(28px, 4vw, 40px); }
+
 /* ---------- monte seu pedido ---------- */
 
 .pedido-grade {

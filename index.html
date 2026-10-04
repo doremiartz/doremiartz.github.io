@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600&family=Figtree:wght@400;500;600;700&family=Gloock&display=swap">
 <!-- o "?v=" força os navegadores a baixar a versão nova; aumente o número quando mudar o CSS ou o JS -->
-<link rel="stylesheet" href="estilo.css?v=7">
+<link rel="stylesheet" href="estilo.css?v=8">
 </head>
 <body>
 
@@ -117,8 +117,11 @@
         <p class="etiqueta" data-campo="galeria.etiqueta"></p>
         <h2 id="galeria-titulo" data-campo="galeria.titulo"></h2>
         <p class="secao-sub" data-campo="galeria.subtitulo"></p>
-        <p class="nota" data-i18n="estimativa_nota"></p>
       </header>
+      <div class="aviso-estimativa revelar" role="note">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 11v6M12 7.5v.5"/></svg>
+        <div><strong data-i18n="aviso_estimativa_titulo">Isto é uma estimativa</strong><p data-i18n="aviso_estimativa_texto"></p></div>
+      </div>
       <div class="galeria" id="galeria"></div>
     </div>
   </section>
@@ -197,10 +200,13 @@
           <h3 id="resumo-titulo" data-i18n="pedido_resumo">Seu pedido</h3>
           <ul class="resumo-linhas" id="resumo-linhas"></ul>
           <div class="resumo-total">
-            <span data-i18n="pedido_total">Estimativa</span>
+            <span data-i18n="pedido_total">Valor estimado</span>
             <strong id="resumo-total" aria-live="polite"></strong>
           </div>
-          <p class="resumo-nota" data-i18n="pedido_nota"></p>
+          <div class="aviso-estimativa" role="note">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 11v6M12 7.5v.5"/></svg>
+            <div><strong data-i18n="aviso_estimativa_titulo">Isto é uma estimativa</strong><p data-i18n="aviso_estimativa_texto"></p></div>
+          </div>
           <p class="resumo-pagamento"><b data-i18n="pedido_pagamento">Pagamento</b> <span data-campo="pedido.pagamento"></span></p>
           <p class="resumo-fechado" id="resumo-fechado" data-i18n="pedido_fechado" hidden></p>
           <div class="resumo-acoes">
@@ -304,6 +310,6 @@
   <button class="visor-seta visor-proxima" type="button" data-visor="proxima" data-i18n-aria="proxima" aria-label="Próxima">→</button>
 </dialog>
 
-<script src="script.js?v=7"></script>
+<script src="script.js?v=8"></script>
 </body>
 </html>

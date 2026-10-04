@@ -181,7 +181,7 @@
       `• ${t.msg_fundo}: ${nomesFundo[pedido.fundo]}`,
       ...(ideia ? [`• ${t.msg_ideia}: ${ideia}`] : []),
       "",
-      `${t.msg_estimativa}: ${est?.aPartir ? `${t.a_partir_de} ` : ""}${dinheiro(est?.total ?? 0)}`
+      `${t.msg_estimativa}: ${est?.aPartir ? `${t.a_partir_de} ` : "≈ "}${dinheiro(est?.total ?? 0)}`
     ].join("\n");
   }
 
@@ -195,7 +195,8 @@
 
     // o total "conta" até o valor novo
     const total = est?.total ?? 0;
-    const prefixo = est?.aPartir ? `<small>${esc(t.a_partir_de)}</small> ` : "";
+    // "≈" deixa claro que o valor é aproximado ("a partir de" quando tem background)
+    const prefixo = est?.aPartir ? `<small>${esc(t.a_partir_de)}</small> ` : "≈ ";
     const caixa = $("#resumo-total");
     const primeiraVez = totalMostrado == null;
     const de = totalMostrado ?? total, inicio = performance.now();
@@ -359,7 +360,7 @@
         if (est?.manual) {
           etiqueta = `<span class="estimativa-rotulo">${esc(t.estimativa)}</span><strong>${esc(est.manual)}</strong>`;
         } else if (est) {
-          etiqueta = `<span class="estimativa-rotulo">${esc(t.estimativa)}</span><strong>${est.aPartir ? `<small>${esc(t.a_partir_de)}</small> ` : ""}${esc(dinheiro(est.total))}</strong>`;
+          etiqueta = `<span class="estimativa-rotulo">${esc(t.estimativa)}</span><strong>${est.aPartir ? `<small>${esc(t.a_partir_de)}</small> ` : "≈ "}${esc(dinheiro(est.total))}</strong>`;
           conta = est.partes.map((p) => `<span>${esc(rotuloParte(p))} <b>${esc(dinheiro(p.valor))}</b></span>`).join('<i aria-hidden="true">+</i>');
         } else {
           etiqueta = `<span class="estimativa-rotulo">${esc(t.estimativa)}</span><strong>${esc(t.sob_consulta)}</strong>`;
