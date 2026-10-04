@@ -131,7 +131,7 @@
     "titulo": "Avisos importantes",
     "lista": [
       { "titulo": "Pagamento", "texto": "50% no rascunho e os outros 50% na entrega final.", "destaque": false },
-      { "titulo": "Prazo", "texto": "De 1 a 3 semanas para ficar pronto.", "destaque": false },
+      { "titulo": "Prazo", "texto": "De 1 a 2 semanas para ficar pronto.", "destaque": false },
       { "titulo": "Fila", "texto": "Tem prioridade quem pagou antes. Você será avisado quando chegar a sua vez.", "destaque": false },
       { "titulo": "Direito de recusa", "texto": "Posso recusar um pedido se eu não me sentir confortável com ele.", "destaque": false },
       { "titulo": "Uso de IA", "texto": "Usar minha arte com IA para fins comerciais é absolutamente nojento. Se eu perceber, o cliente será permanentemente banido de comissionar comigo.", "destaque": true }

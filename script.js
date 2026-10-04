@@ -335,8 +335,8 @@
       origem = alvo;
       mostrar(Number(alvo.dataset.indice));
       visor.showModal();
-      // a luz e a asinha vão junto para dentro do visor
-      visor.append($("#luz-cursor"), $("#asa-cursor"));
+      // a luz, o rastro e a pena vão junto para dentro do visor
+      visor.append(...efeitosMouse());
     });
 
     const fechar = () => { visor.close(); devolverEfeitosMouse(); };
@@ -366,10 +366,10 @@
     });
   }
 
-  // traz a luz e a asinha de volta para a página quando o visor fecha
+  // traz a luz, o rastro e a pena de volta para a página quando o visor fecha
+  const efeitosMouse = () => [$("#luz-cursor"), $("#rastro-cursor"), $("#pena-cursor")];
   function devolverEfeitosMouse() {
-    const luz = $("#luz-cursor"), asa = $("#asa-cursor");
-    if (asa.parentElement !== document.body) document.body.append(luz, asa);
+    if ($("#pena-cursor").parentElement !== document.body) document.body.append(...efeitosMouse());
   }
 
   /* ---------------- vídeo ---------------- */
@@ -464,10 +464,156 @@
     });
   }
 
-  /* ---------------- mouse: luz que segue + ponteiro de asinha ---------------- */
+  /* ---------------- mouse: rastro roxo com faíscas douradas ---------------- */
+
+  const rastro = (() => {
+    const tela = $("#rastro-cursor");
+    if (!mouseFino || semMovimento || !tela.getContext) return { ponto() {}, explosao() {} };
+    const ctx = tela.getContext("2d");
+    const DURACAO = 480;           // quanto tempo (ms) cada ponto do rastro dura
+    const ROXO = "155, 77, 255";
+    const LILAS = "222, 196, 255";
+    const OURO = "255, 216, 107";
+    let pontos = [];               // {x, y, t}
+    let faiscas = [];              // {x, y, vx, vy, vida, max, tam, giro, vg}
+    let rodando = false, ultimo = 0, distancia = 0;
+
+    const ajustar = () => {
+      const dpr = Math.min(devicePixelRatio || 1, 2);
+      tela.width = innerWidth * dpr;
+      tela.height = innerHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    ajustar();
+    addEventListener("resize", ajustar);
+
+    const novaFaisca = (x, y, forca = 0) => {
+      const ang = Math.random() * Math.PI * 2;
+      const vel = forca ? forca * (0.5 + Math.random()) : 0.15 + Math.random() * 0.35;
+      faiscas.push({
+        x, y,
+        vx: Math.cos(ang) * vel, vy: Math.sin(ang) * vel + (forca ? 0 : 0.35),
+        vida: 0, max: 450 + Math.random() * 450,
+        tam: 2.2 + Math.random() * (forca ? 3.5 : 2.6),
+        giro: Math.random() * Math.PI, vg: (Math.random() - 0.5) * 0.2
+      });
+    };
+
+    const estrela = (x, y, r, giro) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(giro);
+      ctx.beginPath();
+      for (let i = 0; i < 8; i++) {
+        const raio = i % 2 ? r * 0.28 : r;
+        const a = (i * Math.PI) / 4;
+        ctx.lineTo(Math.cos(a) * raio, Math.sin(a) * raio);
+      }
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    };
+
+    const desenhar = (agora) => {
+      const dt = Math.min(agora - (ultimo || agora), 50);
+      ultimo = agora;
+      pontos = pontos.filter((p) => agora - p.t < DURACAO);
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      ctx.globalCompositeOperation = "source-over";
+
+      if (pontos.length > 2) {
+        // direção perpendicular ao caminho em cada ponto, e quanto o ponto ainda "vive" (1 = novo, 0 = sumindo)
+        const guia = pontos.map((p, i) => {
+          const q = pontos[Math.min(i + 1, pontos.length - 1)], o = pontos[Math.max(i - 1, 0)];
+          const dx = q.x - o.x, dy = q.y - o.y, len = Math.hypot(dx, dy) || 1;
+          return { x: p.x, y: p.y, nx: -dy / len, ny: dx / len, k: 1 - (agora - p.t) / DURACAO, t: p.t };
+        });
+
+        // a fita roxa é uma forma só (sem emendas): larga perto da pena e afinando até sumir
+        const fita = (escala) => {
+          ctx.beginPath();
+          guia.forEach((g, i) => { const m = (1 + 9 * g.k) * g.k * escala; i ? ctx.lineTo(g.x + g.nx * m, g.y + g.ny * m) : ctx.moveTo(g.x + g.nx * m, g.y + g.ny * m); });
+          for (let i = guia.length - 1; i >= 0; i--) { const g = guia[i], m = (1 + 9 * g.k) * g.k * escala; ctx.lineTo(g.x - g.nx * m, g.y - g.ny * m); }
+          ctx.closePath();
+          ctx.fill();
+          // ponta arredondada perto da pena (desenhada à parte para não abrir um "furo" na fita)
+          const fim = guia[guia.length - 1], raio = (1 + 9 * fim.k) * fim.k * escala;
+          ctx.beginPath();
+          ctx.arc(fim.x, fim.y, raio, 0, Math.PI * 2);
+          ctx.fill();
+        };
+        ctx.shadowBlur = 18;
+        ctx.shadowColor = `rgba(${ROXO}, .95)`;
+        ctx.fillStyle = `rgba(${ROXO}, .6)`;
+        fita(0.9);
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = `rgba(${LILAS}, .9)`;
+        fita(0.28);
+
+        // o fio dourado que se enrola na fita e some junto com ela
+        ctx.globalCompositeOperation = "lighter";
+        ctx.lineCap = "butt";
+        ctx.lineWidth = 1.2;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = `rgba(${OURO}, .8)`;
+        let antes = null;
+        guia.forEach((g, i) => {
+          const onda = Math.sin(g.t * 0.012 + i * 0.7) * (1 + 6 * g.k);
+          const atual = { x: g.x + g.nx * onda, y: g.y + g.ny * onda };
+          if (antes) {
+            ctx.strokeStyle = `rgba(${OURO}, ${0.85 * g.k})`;
+            ctx.beginPath(); ctx.moveTo(antes.x, antes.y); ctx.lineTo(atual.x, atual.y); ctx.stroke();
+          }
+          antes = atual;
+        });
+        ctx.shadowBlur = 0;
+      }
+      ctx.globalCompositeOperation = "lighter";
+
+      // faíscas douradas
+      faiscas = faiscas.filter((f) => (f.vida += dt) < f.max);
+      for (const f of faiscas) {
+        f.x += f.vx * dt * 0.06;
+        f.y += f.vy * dt * 0.06;
+        f.vx *= 0.97; f.vy = f.vy * 0.97 + 0.004 * dt;
+        f.giro += f.vg;
+        const vida = 1 - f.vida / f.max;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = `rgba(255, 185, 56, ${vida})`;
+        ctx.fillStyle = `rgba(${OURO}, ${vida})`;
+        estrela(f.x, f.y, f.tam * (0.6 + 0.4 * vida), f.giro);
+      }
+      ctx.shadowBlur = 0;
+
+      rodando = pontos.length > 0 || faiscas.length > 0;
+      if (rodando) requestAnimationFrame(desenhar);
+      else { ultimo = 0; ctx.clearRect(0, 0, innerWidth, innerHeight); }
+    };
+    const animar = () => { if (!rodando) { rodando = true; requestAnimationFrame(desenhar); } };
+
+    return {
+      ponto(x, y) {
+        const anterior = pontos[pontos.length - 1];
+        if (anterior) {
+          distancia += Math.hypot(x - anterior.x, y - anterior.y);
+          // uma faísca a cada ~26px percorridos
+          while (distancia > 26) { distancia -= 26; novaFaisca(x, y); }
+        }
+        pontos.push({ x, y, t: performance.now() });
+        if (pontos.length > 60) pontos.shift();
+        animar();
+      },
+      explosao(x, y) {
+        for (let i = 0; i < 14; i++) novaFaisca(x, y, 2.2);
+        animar();
+      }
+    };
+  })();
+
+  /* ---------------- mouse: luz que segue + ponteiro de pena ---------------- */
 
   const luz = $("#luz-cursor");
-  const asa = $("#asa-cursor");
+  const pena = $("#pena-cursor");
   if (mouseFino) {
     let alvoX = innerWidth / 2, alvoY = innerHeight / 2;
     let x = alvoX, y = alvoY, escala = 1, alvoEscala = 1;
@@ -488,25 +634,26 @@
     };
     const animar = () => { if (!rodando) { rodando = true; requestAnimationFrame(passo); } };
 
-    // a asinha fica exatamente na ponta do mouse (sem atraso)
-    const moverAsa = (px, py) => {
-      asa.style.setProperty("--ax", `${px}px`);
-      asa.style.setProperty("--ay", `${py}px`);
+    // a pena fica exatamente na ponta do mouse (sem atraso)
+    const moverPena = (px, py) => {
+      pena.style.setProperty("--ax", `${px}px`);
+      pena.style.setProperty("--ay", `${py}px`);
     };
 
     addEventListener("pointermove", (ev) => {
       if (ev.pointerType !== "mouse") return;
-      // proteção: se o visor fechou, a asinha nunca pode ficar presa dentro dele
+      // proteção: se o visor fechou, a pena nunca pode ficar presa dentro dele
       if (!$("#visor").open) devolverEfeitosMouse();
       if (!luz.classList.contains("ativa")) { x = ev.clientX; y = ev.clientY; }
       alvoX = ev.clientX;
       alvoY = ev.clientY;
-      moverAsa(ev.clientX, ev.clientY);
-      document.documentElement.classList.add("com-asa");
+      moverPena(ev.clientX, ev.clientY);
+      rastro.ponto(ev.clientX, ev.clientY);
+      document.documentElement.classList.add("com-pena");
       luz.classList.add("ativa");
-      asa.classList.add("ativa");
-      // sobre links e botões a asinha cresce um pouco
-      asa.classList.toggle("sobre-link", !!ev.target.closest?.("a, button, select, label, [data-grupo]"));
+      pena.classList.add("ativa");
+      // sobre links e botões a pena cresce e inclina um pouco
+      pena.classList.toggle("sobre-link", !!ev.target.closest?.("a, button, select, label, [data-grupo]"));
       animar();
     }, { passive: true });
 
@@ -515,18 +662,19 @@
       luz.classList.add("clicando");
       alvoEscala = 0.82;
       animar();
-      // bate a asa (reinicia a animação a cada clique)
-      asa.classList.remove("batendo");
-      void asa.offsetWidth;
-      asa.classList.add("batendo");
+      rastro.explosao(ev.clientX, ev.clientY);
+      // a pena "escreve" (reinicia a animação a cada clique)
+      pena.classList.remove("escrevendo");
+      void pena.offsetWidth;
+      pena.classList.add("escrevendo");
     });
     const soltar = () => { luz.classList.remove("clicando"); alvoEscala = 1; animar(); };
     addEventListener("pointerup", soltar);
     addEventListener("blur", soltar);
-    asa.addEventListener("animationend", () => asa.classList.remove("batendo"));
+    pena.addEventListener("animationend", () => pena.classList.remove("escrevendo"));
     document.documentElement.addEventListener("mouseleave", () => {
       luz.classList.remove("ativa");
-      asa.classList.remove("ativa");
+      pena.classList.remove("ativa");
     });
   }
 

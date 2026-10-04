@@ -174,7 +174,7 @@
         "titulo": "Important notes",
         "lista": [
           { "titulo": "Payment", "texto": "50% at the sketch stage and the other 50% on final delivery." },
-          { "titulo": "Deadline", "texto": "1 to 3 weeks to finish." },
+          { "titulo": "Deadline", "texto": "1 to 2 weeks to finish." },
           { "titulo": "Queue", "texto": "Whoever pays first gets priority. You'll be notified when it's your turn." },
           { "titulo": "Right to refuse", "texto": "I may turn down a request if I'm not comfortable with it." },
           { "titulo": "AI use", "texto": "Using my art with AI for commercial purposes is absolutely disgusting. If I notice it, the client will be permanently banned from commissioning me." }
@@ -237,7 +237,7 @@
         "titulo": "Avisos importantes",
         "lista": [
           { "titulo": "Pago", "texto": "50% en el boceto y el otro 50% en la entrega final." },
-          { "titulo": "Plazo", "texto": "De 1 a 3 semanas para estar listo." },
+          { "titulo": "Plazo", "texto": "De 1 a 2 semanas para estar listo." },
           { "titulo": "Cola", "texto": "Tiene prioridad quien pagó primero. Te avisaré cuando sea tu turno." },
           { "titulo": "Derecho a rechazar", "texto": "Puedo rechazar un pedido si no me siento cómodo con él." },
           { "titulo": "Uso de IA", "texto": "Usar mi arte con IA con fines comerciales es absolutamente asqueroso. Si lo noto, el cliente quedará vetado permanentemente para encargarme comisiones." }
