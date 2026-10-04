@@ -104,6 +104,166 @@
     };
   }
 
+  // nome de cada parte da conta (ex.: "Render Halfbody", "Personagem extra", "Background complexo")
+  const rotularParte = (parte, t) =>
+    parte.chave === "base" ? parte.rotulo
+    : parte.chave === "extra" ? (parte.qtd > 1 ? `${parte.qtd}× ${t.personagem_extra}` : t.personagem_extra)
+    : parte.chave === "complexo" ? t.bg_complexo : t.bg_simples;
+
+  /* ---------------- monte seu pedido ---------------- */
+
+  const pedido = { estilo: null, tamanho: null, extras: 0, fundo: "nenhum" };
+  let contextoPedido = null;   // { d, t, dinheiro } do idioma atual
+  let totalMostrado = null;
+
+  function montarPedido(d, t, dinheiro) {
+    contextoPedido = { d, t, dinheiro };
+    const estilos = BASE.precos?.estilos || [];
+    $("#pedido").hidden = !estilos.length;
+    if (!estilos.length) return;
+    if (!estilos.some((e) => e.nome === pedido.estilo)) pedido.estilo = estilos[0].nome;
+
+    $("#opcoes-estilo").innerHTML = estilos
+      .map((e, i) => {
+        const menor = Math.min(...(e.itens || []).map((it) => Number(it.preco)).filter((n) => !isNaN(n)));
+        return `<label class="opcao-estilo" for="estilo-${i}">
+          <input type="radio" name="estilo" id="estilo-${i}" value="${esc(e.nome)}"${e.nome === pedido.estilo ? " checked" : ""}>
+          <span class="opcao-estilo-img"><img src="${esc(e.imagem)}" alt="" loading="lazy" decoding="async"></span>
+          <span class="opcao-estilo-nome">${esc(e.nome)}</span>
+          ${isFinite(menor) ? `<span class="opcao-estilo-preco">${esc(t.a_partir_de)} ${esc(dinheiro(menor))}</span>` : ""}
+        </label>`;
+      })
+      .join("");
+    $("#pedido-ideia").placeholder = t.pedido_ideia_exemplo || "";
+    atualizarOpcoesPedido();
+  }
+
+  // tamanhos (os preços mudam conforme o estilo), fundos e contador de personagens
+  function atualizarOpcoesPedido() {
+    const { t, dinheiro } = contextoPedido;
+    const estilo = (BASE.precos?.estilos || []).find((e) => e.nome === pedido.estilo);
+    const itens = estilo?.itens || [];
+    if (!itens.some((i) => i.tipo === pedido.tamanho)) pedido.tamanho = itens[0]?.tipo;
+
+    $("#opcoes-tamanho").innerHTML = itens
+      .map((it, i) => `<label class="pilula" for="tamanho-${i}">
+          <input type="radio" name="tamanho" id="tamanho-${i}" value="${esc(it.tipo)}"${it.tipo === pedido.tamanho ? " checked" : ""}>
+          ${iconeCorte(it.tipo)}<span>${esc(it.tipo)}</span><small>${esc(dinheiro(it.preco))}</small>
+        </label>`)
+      .join("");
+
+    const ex = BASE.precos?.extras || {};
+    const fundos = [
+      ["nenhum", t.fundo_nenhum, "—"],
+      ["simples", t.bg_simples, `${t.a_partir_de} ${dinheiro(ex.backgroundSimples ?? 0)}`],
+      ["complexo", t.bg_complexo, `${t.a_partir_de} ${dinheiro(ex.backgroundComplexo ?? 0)}`]
+    ];
+    $("#opcoes-fundo").innerHTML = fundos
+      .map(([valor, nome, preco]) => `<label class="pilula" for="fundo-${valor}">
+          <input type="radio" name="fundo" id="fundo-${valor}" value="${valor}"${valor === pedido.fundo ? " checked" : ""}>
+          <span>${esc(nome)}</span><small>${esc(preco)}</small>
+        </label>`)
+      .join("");
+
+    $("#extras-dica").textContent = ex.personagemExtraPorcento != null ? preencher(t.pedido_extras_dica, { porcento: ex.personagemExtraPorcento }) : "";
+    atualizarResumo();
+  }
+
+  function mensagemPedido(est) {
+    const { t, dinheiro } = contextoPedido;
+    const nomesFundo = { nenhum: t.msg_fundo_nenhum, simples: t.msg_fundo_simples, complexo: t.msg_fundo_complexo };
+    const ideia = $("#pedido-ideia").value.trim();
+    return [
+      t.msg_oi,
+      `• ${t.msg_estilo}: ${pedido.estilo}`,
+      `• ${t.msg_tamanho}: ${pedido.tamanho}`,
+      ...(pedido.extras ? [`• ${t.msg_extras}: ${pedido.extras}`] : []),
+      `• ${t.msg_fundo}: ${nomesFundo[pedido.fundo]}`,
+      ...(ideia ? [`• ${t.msg_ideia}: ${ideia}`] : []),
+      "",
+      `${t.msg_estimativa}: ${est?.aPartir ? `${t.a_partir_de} ` : ""}${dinheiro(est?.total ?? 0)}`
+    ].join("\n");
+  }
+
+  function atualizarResumo() {
+    const { d, t, dinheiro } = contextoPedido;
+    const est = estimar({ estilo: pedido.estilo, tamanho: pedido.tamanho, personagensExtras: pedido.extras, background: pedido.fundo });
+
+    $("#resumo-linhas").innerHTML = (est?.partes || [])
+      .map((p) => `<li><span>${esc(rotularParte(p, t))}</span><b>${p.chave === "simples" || p.chave === "complexo" ? `<small>${esc(t.a_partir_de)}</small> ` : ""}${esc(dinheiro(p.valor))}</b></li>`)
+      .join("");
+
+    // o total "conta" até o valor novo
+    const total = est?.total ?? 0;
+    const prefixo = est?.aPartir ? `<small>${esc(t.a_partir_de)}</small> ` : "";
+    const caixa = $("#resumo-total");
+    const primeiraVez = totalMostrado == null;
+    const de = totalMostrado ?? total, inicio = performance.now();
+    totalMostrado = total;
+    const passo = (agora) => {
+      // na primeira vez (ou com "menos movimento") o valor aparece direto, sem contar
+      const p = semMovimento || primeiraVez ? 1 : Math.min((agora - inicio) / 380, 1);
+      const valor = Math.round(de + (total - de) * (1 - Math.pow(1 - p, 3)));
+      caixa.innerHTML = prefixo + esc(dinheiro(valor));
+      if (p < 1) requestAnimationFrame(passo);
+    };
+    passo(inicio);
+
+    // contador de personagens
+    const max = Number(BASE.pedido?.maxExtras) || 5;
+    $("#extras-valor").textContent = pedido.extras;
+    $("#extras-menos").disabled = pedido.extras <= 0;
+    $("#extras-mais").disabled = pedido.extras >= max;
+
+    // mensagem pronta + link do Telegram com o texto já preenchido
+    const msg = mensagemPedido(est);
+    $("#pedido-mensagem").textContent = msg;
+    const telegram = (BASE.contato?.redes || []).find((r) => normalizar(r.nome) === "telegram");
+    const botaoTelegram = $("#pedido-telegram");
+    botaoTelegram.hidden = !telegram;
+    if (telegram) botaoTelegram.href = `${telegram.url}${telegram.url.includes("?") ? "&" : "?"}text=${encodeURIComponent(msg)}`;
+
+    $("#resumo-fechado").hidden = !!d.comissoes?.abertas;
+  }
+
+  async function copiarPedido(silencioso = false) {
+    const { t } = contextoPedido;
+    const aviso = $("#pedido-aviso");
+    const msg = $("#pedido-mensagem").textContent;
+    try {
+      await navigator.clipboard.writeText(msg);
+      if (!silencioso) aviso.textContent = t.pedido_copiado;
+    } catch {
+      // plano B: seleciona o texto da mensagem para a pessoa copiar
+      if (silencioso) return;
+      const caixa = $(".resumo-mensagem");
+      caixa.open = true;
+      const faixa = document.createRange();
+      faixa.selectNodeContents($("#pedido-mensagem"));
+      getSelection().removeAllRanges();
+      getSelection().addRange(faixa);
+      aviso.textContent = document.execCommand?.("copy") ? t.pedido_copiado : t.pedido_copiar_erro;
+    }
+  }
+
+  function ativarPedido() {
+    const form = $("#pedido-form");
+    form.addEventListener("submit", (ev) => ev.preventDefault());
+    form.addEventListener("change", (ev) => {
+      const { name, value } = ev.target;
+      if (name === "estilo") { pedido.estilo = value; atualizarOpcoesPedido(); }
+      if (name === "tamanho") { pedido.tamanho = value; atualizarResumo(); }
+      if (name === "fundo") { pedido.fundo = value; atualizarResumo(); }
+    });
+    $("#pedido-ideia").addEventListener("input", () => atualizarResumo());
+    const max = () => Number(BASE.pedido?.maxExtras) || 5;
+    $("#extras-menos").addEventListener("click", () => { pedido.extras = Math.max(0, pedido.extras - 1); atualizarResumo(); });
+    $("#extras-mais").addEventListener("click", () => { pedido.extras = Math.min(max(), pedido.extras + 1); atualizarResumo(); });
+    $("#pedido-copiar").addEventListener("click", () => copiarPedido());
+    // ao abrir o Telegram, também copia (caso o app não preencha a mensagem sozinho)
+    $("#pedido-telegram").addEventListener("click", () => copiarPedido(true));
+  }
+
   /* ---------------- montagem ---------------- */
 
   let jaMontou = false;
@@ -189,10 +349,7 @@
 
     // galeria com preço estimado
     const obras = d.galeria?.obras || [];
-    const rotuloParte = (parte) =>
-      parte.chave === "base" ? parte.rotulo
-      : parte.chave === "extra" ? (parte.qtd > 1 ? `${parte.qtd}× ${t.personagem_extra}` : t.personagem_extra)
-      : parte.chave === "complexo" ? t.bg_complexo : t.bg_simples;
+    const rotuloParte = (parte) => rotularParte(parte, t);
 
     $("#galeria").innerHTML = obras
       .map((o, i) => {
@@ -282,6 +439,13 @@
       .map(([item, valor]) => `<li><span>${esc(item)}</span><span class="pontilhado"></span><strong>${esc(valor)}</strong></li>`)
       .join("");
 
+    // perguntas frequentes
+    const perguntas = d.faq?.perguntas || [];
+    $("#faq").hidden = !perguntas.length;
+    $("#faq-lista").innerHTML = perguntas
+      .map((p) => `<details class="faq-item"><summary>${esc(p.pergunta)}<span class="faq-icone" aria-hidden="true"></span></summary><p>${esc(p.resposta)}</p></details>`)
+      .join("");
+
     // redes
     $("#redes").innerHTML = (d.contato?.redes || [])
       .map((r) => {
@@ -302,10 +466,13 @@
       precos: estilos.map((e) => ({ src: e.imagem, titulo: e.nome, alt: preencher(t.tabela_alt, { nome: e.nome }) }))
     };
 
+    montarPedido(d, t, dinheiro);
+
     if (!jaMontou) {
       jaMontou = true;
       ativarVisor();
       ativarVideo();
+      ativarPedido();
     }
     ativarRevelar();
   }

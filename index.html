@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600&family=Figtree:wght@400;500;600;700&family=Gloock&display=swap">
 <!-- o "?v=" força os navegadores a baixar a versão nova; aumente o número quando mudar o CSS ou o JS -->
-<link rel="stylesheet" href="estilo.css?v=6">
+<link rel="stylesheet" href="estilo.css?v=7">
 </head>
 <body>
 
@@ -49,6 +49,7 @@
       <a href="#trabalhos" data-i18n="menu_trabalhos">Trabalhos</a>
       <a href="#processo" data-i18n="menu_processo">Processo</a>
       <a href="#precos" data-i18n="menu_precos">Preços</a>
+      <a href="#pedido" data-i18n="menu_pedido">Pedido</a>
       <a href="#avisos" data-i18n="menu_avisos">Avisos</a>
     </nav>
     <div class="topo-acoes">
@@ -146,6 +147,73 @@
       </header>
       <div class="precos" id="lista-precos"></div>
       <p class="aviso-fechado" id="aviso-fechado" data-i18n="aviso_fechado" hidden></p>
+      <div class="precos-chamada revelar">
+        <a class="botao" href="#pedido" data-i18n="montar_pedido">Montar meu pedido</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="pedido" aria-labelledby="pedido-titulo">
+    <div class="container">
+      <header class="secao-cabeca revelar">
+        <p class="etiqueta" data-campo="pedido.etiqueta"></p>
+        <h2 id="pedido-titulo" data-campo="pedido.titulo"></h2>
+        <p class="secao-sub" data-campo="pedido.texto"></p>
+      </header>
+
+      <div class="pedido-grade">
+        <form class="pedido-form revelar" id="pedido-form" novalidate>
+          <fieldset class="pedido-grupo">
+            <legend data-i18n="pedido_estilo">Estilo</legend>
+            <div class="opcoes-estilo" id="opcoes-estilo"></div>
+          </fieldset>
+
+          <fieldset class="pedido-grupo">
+            <legend data-i18n="pedido_tamanho">Tamanho</legend>
+            <div class="opcoes-pilula" id="opcoes-tamanho"></div>
+          </fieldset>
+
+          <fieldset class="pedido-grupo">
+            <legend><span data-i18n="pedido_extras">Personagens extras</span> <small id="extras-dica"></small></legend>
+            <div class="contador">
+              <button type="button" class="contador-botao" id="extras-menos" data-i18n-aria="pedido_menos" aria-label="Menos um personagem">−</button>
+              <output id="extras-valor" for="extras-menos extras-mais" aria-live="polite">0</output>
+              <button type="button" class="contador-botao" id="extras-mais" data-i18n-aria="pedido_mais" aria-label="Mais um personagem">+</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="pedido-grupo">
+            <legend data-i18n="pedido_fundo">Background</legend>
+            <div class="opcoes-pilula" id="opcoes-fundo"></div>
+          </fieldset>
+
+          <div class="pedido-grupo">
+            <label class="pedido-rotulo" for="pedido-ideia" data-i18n="pedido_ideia">Conte sua ideia (opcional)</label>
+            <textarea id="pedido-ideia" rows="4" maxlength="600"></textarea>
+          </div>
+        </form>
+
+        <aside class="pedido-resumo revelar" aria-labelledby="resumo-titulo">
+          <h3 id="resumo-titulo" data-i18n="pedido_resumo">Seu pedido</h3>
+          <ul class="resumo-linhas" id="resumo-linhas"></ul>
+          <div class="resumo-total">
+            <span data-i18n="pedido_total">Estimativa</span>
+            <strong id="resumo-total" aria-live="polite"></strong>
+          </div>
+          <p class="resumo-nota" data-i18n="pedido_nota"></p>
+          <p class="resumo-pagamento"><b data-i18n="pedido_pagamento">Pagamento</b> <span data-campo="pedido.pagamento"></span></p>
+          <p class="resumo-fechado" id="resumo-fechado" data-i18n="pedido_fechado" hidden></p>
+          <div class="resumo-acoes">
+            <a class="botao" id="pedido-telegram" href="#" target="_blank" rel="noopener" data-i18n="pedido_telegram">Enviar pelo Telegram</a>
+            <button class="botao botao-contorno" id="pedido-copiar" type="button" data-i18n="pedido_copiar">Copiar pedido</button>
+          </div>
+          <p class="resumo-aviso" id="pedido-aviso" role="status"></p>
+          <details class="resumo-mensagem">
+            <summary data-i18n="pedido_ver_mensagem">Ver a mensagem</summary>
+            <pre id="pedido-mensagem"></pre>
+          </details>
+        </aside>
+      </div>
     </div>
   </section>
 
@@ -165,6 +233,16 @@
           <ul id="adicionais"></ul>
         </aside>
       </div>
+    </div>
+  </section>
+
+  <section class="secao" id="faq" aria-labelledby="faq-titulo">
+    <div class="container faq-grade">
+      <header class="secao-cabeca revelar">
+        <p class="etiqueta" data-campo="faq.etiqueta"></p>
+        <h2 id="faq-titulo" data-campo="faq.titulo"></h2>
+      </header>
+      <div class="faq-lista revelar" id="faq-lista"></div>
     </div>
   </section>
 
@@ -226,6 +304,6 @@
   <button class="visor-seta visor-proxima" type="button" data-visor="proxima" data-i18n-aria="proxima" aria-label="Próxima">→</button>
 </dialog>
 
-<script src="script.js?v=6"></script>
+<script src="script.js?v=7"></script>
 </body>
 </html>

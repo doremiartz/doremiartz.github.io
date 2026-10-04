@@ -67,6 +67,10 @@ Abra `conteudo.json` no GitHub, clique no lápis (✏️), edite e clique em **C
 - Para escrever um valor na mão, preencha `precoManual` (ex.: `"R$ 150"`). Ele substitui a estimativa.
 - A galeria monta as linhas sozinha, deixando as artes de cada linha com a mesma altura. A ordem na lista é a ordem no site.
 
+**"Monte seu pedido":** usa a mesma tabela de preços e os mesmos adicionais, então não precisa configurar nada à parte. No painel, em **Monte seu pedido**, dá para mudar os textos, as formas de pagamento e o máximo de personagens extras. O botão do Telegram usa o link do Telegram que está em **Contato → Redes**.
+
+**Perguntas frequentes:** no painel, em **Perguntas frequentes**, dá para adicionar, editar ou remover perguntas. As versões em inglês e espanhol ficam no `traducoes.json`, em `"faq"`.
+
 **Mudar os adicionais (personagem extra e backgrounds):** ficam em `"precos" → "extras"`. Mudou ali, muda no quadro "Adicionais" e nas estimativas.
 
 ---

@@ -71,10 +71,10 @@
         "imagem": "imagens/arte-3.jpg",
         "titulo": "Ficha de referência: Brfoda",
         "descricao": "Ficha de referência de um personagem gato calico com vistas de frente e costas, paleta de cores e expressões",
-        "estilo": "Ref sheet",
-        "tamanho": "",
-        "personagensExtras": 0,
-        "background": "nenhum",
+        "estilo": "Flat Colors",
+        "tamanho": "Fullbody",
+        "personagensExtras": 1,
+        "background": "simples",
         "precoManual": ""
       }
     ]
@@ -127,10 +127,17 @@
       "backgroundComplexo": 80
     }
   },
+  "pedido": {
+    "etiqueta": "Monte seu pedido",
+    "titulo": "Quanto fica a sua arte?",
+    "texto": "Escolha as opções e veja a estimativa na hora. No final, é só enviar o pedido pronto pelo Telegram ou copiar e colar onde preferir.",
+    "pagamento": "Pix (Brasil) ou Revolut (outros países). 50% no rascunho e 50% na entrega.",
+    "maxExtras": 5
+  },
   "avisos": {
     "titulo": "Avisos importantes",
     "lista": [
-      { "titulo": "Pagamento", "texto": "50% no rascunho e os outros 50% na entrega final.", "destaque": false },
+      { "titulo": "Pagamento", "texto": "50% no rascunho e os outros 50% na entrega final. Aceito Pix (Brasil) e Revolut (outros países).", "destaque": false },
       { "titulo": "Prazo", "texto": "De 1 a 2 semanas para ficar pronto.", "destaque": false },
       { "titulo": "Fila", "texto": "Tem prioridade quem pagou antes. Você será avisado quando chegar a sua vez.", "destaque": false },
       { "titulo": "Direito de recusa", "texto": "Posso recusar um pedido se eu não me sentir confortável com ele.", "destaque": false },
@@ -139,6 +146,17 @@
     "naoFacoTitulo": "Não faço",
     "naoFaco": ["Mecha", "Veículos detalhados", "NSFW", "Proship", "Fetiches extremos"],
     "adicionaisTitulo": "Adicionais"
+  },
+  "faq": {
+    "etiqueta": "Dúvidas",
+    "titulo": "Perguntas frequentes",
+    "perguntas": [
+      { "pergunta": "Quais são as formas de pagamento?", "resposta": "Aceito Pix para clientes do Brasil e Revolut para quem paga em outras moedas. O pagamento é dividido em duas partes: 50% no rascunho e os outros 50% na entrega final." },
+      { "pergunta": "Moro fora do Brasil. Como faço para pagar?", "resposta": "Os preços estão em reais (R$). É só converter o valor para a sua moeda e pagar pelo Revolut. Se tiver qualquer dúvida na hora, me chama que a gente resolve junto." },
+      { "pergunta": "Em que formato eu recebo a arte?", "resposta": "O formato do arquivo e a forma de envio são combinados na nossa conversa, do jeito que for melhor para você." },
+      { "pergunta": "Posso usar a arte para fins comerciais?", "resposta": "Pode! Uso comercial está aberto para conversa e acordo. Me conta como pretende usar a arte e a gente combina os detalhes." },
+      { "pergunta": "Quanto tempo demora para ficar pronto?", "resposta": "De 1 a 2 semanas depois que chegar a sua vez na fila. Você é avisado quando eu começar o seu pedido." }
+    ]
   },
   "contato": {
     "titulo": "Contate-me!",

@@ -44,7 +44,39 @@
       "visor": "Visualizar arte",
       "fechar": "Fechar",
       "anterior": "Anterior",
-      "proxima": "Próxima"
+      "proxima": "Próxima",
+      "menu_pedido": "Pedido",
+      "montar_pedido": "Montar meu pedido ↓",
+      "pedido_estilo": "Estilo",
+      "pedido_tamanho": "Tamanho",
+      "pedido_extras": "Personagens extras",
+      "pedido_extras_dica": "+{porcento}% cada",
+      "pedido_menos": "Menos um personagem",
+      "pedido_mais": "Mais um personagem",
+      "pedido_fundo": "Background",
+      "fundo_nenhum": "Sem background",
+      "pedido_ideia": "Conte sua ideia (opcional)",
+      "pedido_ideia_exemplo": "Ex.: meu OC de cabelo roxo segurando uma espada, num pôr do sol…",
+      "pedido_resumo": "Seu pedido",
+      "pedido_total": "Estimativa",
+      "pedido_nota": "Valor aproximado. O preço final é combinado com o artista.",
+      "pedido_pagamento": "Pagamento:",
+      "pedido_fechado": "As comissões estão fechadas agora. Guarde seu pedido e envie quando abrirem!",
+      "pedido_telegram": "Enviar pelo Telegram",
+      "pedido_copiar": "Copiar pedido",
+      "pedido_copiado": "Pedido copiado! Agora é só colar no Telegram, Instagram ou TikTok.",
+      "pedido_copiar_erro": "Não consegui copiar. Abra \"Ver a mensagem\", selecione o texto e copie.",
+      "pedido_ver_mensagem": "Ver a mensagem",
+      "msg_oi": "Oi, Doremi! Quero fazer uma comissão:",
+      "msg_estilo": "Estilo",
+      "msg_tamanho": "Tamanho",
+      "msg_extras": "Personagens extras",
+      "msg_fundo": "Background",
+      "msg_fundo_nenhum": "Nenhum",
+      "msg_fundo_simples": "Simples",
+      "msg_fundo_complexo": "Complexo",
+      "msg_ideia": "Ideia",
+      "msg_estimativa": "Estimativa do site"
     },
     "en": {
       "pular": "Skip to content",
@@ -83,7 +115,39 @@
       "visor": "View artwork",
       "fechar": "Close",
       "anterior": "Previous",
-      "proxima": "Next"
+      "proxima": "Next",
+      "menu_pedido": "Order",
+      "montar_pedido": "Build my order ↓",
+      "pedido_estilo": "Style",
+      "pedido_tamanho": "Size",
+      "pedido_extras": "Extra characters",
+      "pedido_extras_dica": "+{porcento}% each",
+      "pedido_menos": "One less character",
+      "pedido_mais": "One more character",
+      "pedido_fundo": "Background",
+      "fundo_nenhum": "No background",
+      "pedido_ideia": "Tell me your idea (optional)",
+      "pedido_ideia_exemplo": "E.g.: my purple-haired OC holding a sword at sunset…",
+      "pedido_resumo": "Your order",
+      "pedido_total": "Estimate",
+      "pedido_nota": "Approximate price. The final price is agreed with the artist.",
+      "pedido_pagamento": "Payment:",
+      "pedido_fechado": "Commissions are closed right now. Save your order and send it when they open!",
+      "pedido_telegram": "Send on Telegram",
+      "pedido_copiar": "Copy order",
+      "pedido_copiado": "Order copied! Now just paste it on Telegram, Instagram or TikTok.",
+      "pedido_copiar_erro": "Couldn't copy. Open \"See the message\", select the text and copy it.",
+      "pedido_ver_mensagem": "See the message",
+      "msg_oi": "Hi, Doremi! I'd like to commission you:",
+      "msg_estilo": "Style",
+      "msg_tamanho": "Size",
+      "msg_extras": "Extra characters",
+      "msg_fundo": "Background",
+      "msg_fundo_nenhum": "None",
+      "msg_fundo_simples": "Simple",
+      "msg_fundo_complexo": "Complex",
+      "msg_ideia": "Idea",
+      "msg_estimativa": "Website estimate"
     },
     "es": {
       "pular": "Saltar al contenido",
@@ -122,7 +186,39 @@
       "visor": "Ver arte",
       "fechar": "Cerrar",
       "anterior": "Anterior",
-      "proxima": "Siguiente"
+      "proxima": "Siguiente",
+      "menu_pedido": "Pedido",
+      "montar_pedido": "Armar mi pedido ↓",
+      "pedido_estilo": "Estilo",
+      "pedido_tamanho": "Tamaño",
+      "pedido_extras": "Personajes extra",
+      "pedido_extras_dica": "+{porcento}% cada uno",
+      "pedido_menos": "Un personaje menos",
+      "pedido_mais": "Un personaje más",
+      "pedido_fundo": "Fondo",
+      "fundo_nenhum": "Sin fondo",
+      "pedido_ideia": "Cuéntame tu idea (opcional)",
+      "pedido_ideia_exemplo": "Ej.: mi OC de cabello morado sosteniendo una espada, al atardecer…",
+      "pedido_resumo": "Tu pedido",
+      "pedido_total": "Estimación",
+      "pedido_nota": "Valor aproximado. El precio final se acuerda con el artista.",
+      "pedido_pagamento": "Pago:",
+      "pedido_fechado": "Las comisiones están cerradas ahora. ¡Guarda tu pedido y envíalo cuando abran!",
+      "pedido_telegram": "Enviar por Telegram",
+      "pedido_copiar": "Copiar pedido",
+      "pedido_copiado": "¡Pedido copiado! Ahora solo pégalo en Telegram, Instagram o TikTok.",
+      "pedido_copiar_erro": "No pude copiar. Abre \"Ver el mensaje\", selecciona el texto y cópialo.",
+      "pedido_ver_mensagem": "Ver el mensaje",
+      "msg_oi": "¡Hola, Doremi! Quiero encargar una comisión:",
+      "msg_estilo": "Estilo",
+      "msg_tamanho": "Tamaño",
+      "msg_extras": "Personajes extra",
+      "msg_fundo": "Fondo",
+      "msg_fundo_nenhum": "Ninguno",
+      "msg_fundo_simples": "Simple",
+      "msg_fundo_complexo": "Complejo",
+      "msg_ideia": "Idea",
+      "msg_estimativa": "Estimación del sitio"
     }
   },
 
@@ -170,10 +266,16 @@
           { "descricao": "Fully painted with light, volume and a detailed finish." }
         ]
       },
+      "pedido": {
+        "etiqueta": "Build your order",
+        "titulo": "How much would your art cost?",
+        "texto": "Pick the options and see the estimate right away. When you're done, send the ready-made order on Telegram or copy and paste it wherever you like.",
+        "pagamento": "Pix (Brazil) or Revolut (other countries). 50% at the sketch stage and 50% on delivery."
+      },
       "avisos": {
         "titulo": "Important notes",
         "lista": [
-          { "titulo": "Payment", "texto": "50% at the sketch stage and the other 50% on final delivery." },
+          { "titulo": "Payment", "texto": "50% at the sketch stage and the other 50% on final delivery. I accept Pix (Brazil) and Revolut (other countries)." },
           { "titulo": "Deadline", "texto": "1 to 2 weeks to finish." },
           { "titulo": "Queue", "texto": "Whoever pays first gets priority. You'll be notified when it's your turn." },
           { "titulo": "Right to refuse", "texto": "I may turn down a request if I'm not comfortable with it." },
@@ -182,6 +284,17 @@
         "naoFacoTitulo": "I don't draw",
         "naoFaco": ["Mecha", "Detailed vehicles", "NSFW", "Proship", "Extreme fetishes"],
         "adicionaisTitulo": "Add-ons"
+      },
+      "faq": {
+        "etiqueta": "Questions",
+        "titulo": "Frequently asked questions",
+        "perguntas": [
+          { "pergunta": "What payment methods do you accept?", "resposta": "I accept Pix for clients in Brazil and Revolut for payments in other currencies. Payment is split in two: 50% at the sketch stage and the other 50% on final delivery." },
+          { "pergunta": "I live outside Brazil. How do I pay?", "resposta": "Prices are in Brazilian reais (R$). Just convert the amount to your currency and pay through Revolut. If you have any questions, message me and we'll sort it out together." },
+          { "pergunta": "What format will I receive the art in?", "resposta": "The file format and how it's delivered are agreed in our conversation, in whatever way works best for you." },
+          { "pergunta": "Can I use the art commercially?", "resposta": "Yes! Commercial use is open for discussion and agreement. Tell me how you plan to use the art and we'll work out the details." },
+          { "pergunta": "How long does it take?", "resposta": "1 to 2 weeks once it's your turn in the queue. You'll be notified when I start your order." }
+        ]
       },
       "contato": {
         "titulo": "Contact me!",
@@ -233,10 +346,16 @@
           { "descricao": "Pintura completa con luz, volumen y acabado detallado." }
         ]
       },
+      "pedido": {
+        "etiqueta": "Arma tu pedido",
+        "titulo": "¿Cuánto costaría tu arte?",
+        "texto": "Elige las opciones y mira la estimación al instante. Al final, envía el pedido listo por Telegram o cópialo y pégalo donde prefieras.",
+        "pagamento": "Pix (Brasil) o Revolut (otros países). 50% en el boceto y 50% en la entrega."
+      },
       "avisos": {
         "titulo": "Avisos importantes",
         "lista": [
-          { "titulo": "Pago", "texto": "50% en el boceto y el otro 50% en la entrega final." },
+          { "titulo": "Pago", "texto": "50% en el boceto y el otro 50% en la entrega final. Acepto Pix (Brasil) y Revolut (otros países)." },
           { "titulo": "Plazo", "texto": "De 1 a 2 semanas para estar listo." },
           { "titulo": "Cola", "texto": "Tiene prioridad quien pagó primero. Te avisaré cuando sea tu turno." },
           { "titulo": "Derecho a rechazar", "texto": "Puedo rechazar un pedido si no me siento cómodo con él." },
@@ -245,6 +364,17 @@
         "naoFacoTitulo": "No hago",
         "naoFaco": ["Mecha", "Vehículos detallados", "NSFW", "Proship", "Fetiches extremos"],
         "adicionaisTitulo": "Adicionales"
+      },
+      "faq": {
+        "etiqueta": "Dudas",
+        "titulo": "Preguntas frecuentes",
+        "perguntas": [
+          { "pergunta": "¿Qué formas de pago aceptas?", "resposta": "Acepto Pix para clientes de Brasil y Revolut para pagos en otras monedas. El pago se divide en dos partes: 50% en el boceto y el otro 50% en la entrega final." },
+          { "pergunta": "Vivo fuera de Brasil. ¿Cómo pago?", "resposta": "Los precios están en reales brasileños (R$). Solo convierte el valor a tu moneda y paga por Revolut. Si tienes cualquier duda, escríbeme y lo resolvemos juntos." },
+          { "pergunta": "¿En qué formato recibo el arte?", "resposta": "El formato del archivo y la forma de envío se acuerdan en nuestra conversación, de la manera que mejor te funcione." },
+          { "pergunta": "¿Puedo usar el arte con fines comerciales?", "resposta": "¡Sí! El uso comercial está abierto a conversación y acuerdo. Cuéntame cómo piensas usar el arte y acordamos los detalles." },
+          { "pergunta": "¿Cuánto tiempo tarda?", "resposta": "De 1 a 2 semanas a partir de que llegue tu turno en la cola. Te aviso cuando empiece tu pedido." }
+        ]
       },
       "contato": {
         "titulo": "¡Contáctame!",
