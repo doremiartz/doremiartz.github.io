@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600&family=Figtree:wght@400;500;600;700&family=Gloock&display=swap">
 <!-- o "?v=" força os navegadores a baixar a versão nova; aumente o número quando mudar o CSS ou o JS -->
-<link rel="stylesheet" href="estilo.css?v=8">
+<link rel="stylesheet" href="estilo.css?v=9">
 </head>
 <body>
 
@@ -49,8 +49,8 @@
       <a href="#trabalhos" data-i18n="menu_trabalhos">Trabalhos</a>
       <a href="#processo" data-i18n="menu_processo">Processo</a>
       <a href="#precos" data-i18n="menu_precos">Preços</a>
-      <a href="#pedido" data-i18n="menu_pedido">Pedido</a>
       <a href="#avisos" data-i18n="menu_avisos">Avisos</a>
+      <a href="#pedido" data-i18n="menu_pedido">Pedido</a>
     </nav>
     <div class="topo-acoes">
       <span class="status" data-status><span class="status-ponto"></span><span class="status-texto"></span></span>
@@ -156,6 +156,25 @@
     </div>
   </section>
 
+  <section class="secao" id="avisos" aria-labelledby="avisos-titulo">
+    <div class="container avisos-grade">
+      <div class="revelar">
+        <h2 id="avisos-titulo" data-campo="avisos.titulo"></h2>
+        <dl class="regras" id="regras"></dl>
+      </div>
+      <div class="avisos-lateral">
+        <aside class="nao-faco revelar" aria-labelledby="nao-faco-titulo">
+          <h3 id="nao-faco-titulo" data-campo="avisos.naoFacoTitulo"></h3>
+          <ul id="nao-faco"></ul>
+        </aside>
+        <aside class="adicionais revelar" id="adicionais-quadro" aria-labelledby="adicionais-titulo">
+          <h3 id="adicionais-titulo" data-campo="avisos.adicionaisTitulo"></h3>
+          <ul id="adicionais"></ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
   <section class="secao" id="pedido" aria-labelledby="pedido-titulo">
     <div class="container">
       <header class="secao-cabeca revelar">
@@ -190,6 +209,11 @@
             <div class="opcoes-pilula" id="opcoes-fundo"></div>
           </fieldset>
 
+          <div class="pedido-nao-faco" id="pedido-nao-faco" role="note">
+            <p><span class="pedido-nao-faco-icone" aria-hidden="true"></span><span data-i18n="pedido_nao_faco">Antes de contar sua ideia, lembre que eu não faço:</span></p>
+            <ul id="pedido-nao-faco-lista"></ul>
+          </div>
+
           <div class="pedido-grupo">
             <label class="pedido-rotulo" for="pedido-ideia" data-i18n="pedido_ideia">Conte sua ideia (opcional)</label>
             <textarea id="pedido-ideia" rows="4" maxlength="600"></textarea>
@@ -223,24 +247,6 @@
     </div>
   </section>
 
-  <section class="secao" id="avisos" aria-labelledby="avisos-titulo">
-    <div class="container avisos-grade">
-      <div class="revelar">
-        <h2 id="avisos-titulo" data-campo="avisos.titulo"></h2>
-        <dl class="regras" id="regras"></dl>
-      </div>
-      <div class="avisos-lateral">
-        <aside class="nao-faco revelar" aria-labelledby="nao-faco-titulo">
-          <h3 id="nao-faco-titulo" data-campo="avisos.naoFacoTitulo"></h3>
-          <ul id="nao-faco"></ul>
-        </aside>
-        <aside class="adicionais revelar" id="adicionais-quadro" aria-labelledby="adicionais-titulo">
-          <h3 id="adicionais-titulo" data-campo="avisos.adicionaisTitulo"></h3>
-          <ul id="adicionais"></ul>
-        </aside>
-      </div>
-    </div>
-  </section>
 
   <section class="secao" id="faq" aria-labelledby="faq-titulo">
     <div class="container faq-grade">
@@ -310,6 +316,6 @@
   <button class="visor-seta visor-proxima" type="button" data-visor="proxima" data-i18n-aria="proxima" aria-label="Próxima">→</button>
 </dialog>
 
-<script src="script.js?v=8"></script>
+<script src="script.js?v=9"></script>
 </body>
 </html>

@@ -426,7 +426,11 @@
     $("#regras").innerHTML = (d.avisos?.lista || [])
       .map((r) => `<div${r.destaque ? ' class="regra-destaque"' : ""}>${ESTRELA}<dt>${esc(r.titulo)}</dt><dd>${esc(r.texto)}</dd></div>`)
       .join("");
-    $("#nao-faco").innerHTML = (d.avisos?.naoFaco || []).map((n) => `<li>${esc(n)}</li>`).join("");
+    const naoFaco = (d.avisos?.naoFaco || []).map((n) => `<li>${esc(n)}</li>`).join("");
+    $("#nao-faco").innerHTML = naoFaco;
+    // o mesmo lembrete aparece dentro do "Monte seu pedido", antes do campo da ideia
+    $("#pedido-nao-faco-lista").innerHTML = naoFaco;
+    $("#pedido-nao-faco").hidden = !naoFaco;
 
     // adicionais, gerados a partir dos valores de "extras" nos preços
     const ex = d.precos?.extras || {};
