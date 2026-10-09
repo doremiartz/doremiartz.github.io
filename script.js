@@ -211,7 +211,7 @@
     passo(inicio);
 
     // contador de personagens
-    const max = Number(BASE.pedido?.maxExtras) || 5;
+    const max = maxExtras();
     $("#extras-valor").textContent = pedido.extras;
     $("#extras-menos").disabled = pedido.extras <= 0;
     $("#extras-mais").disabled = pedido.extras >= max;
@@ -247,6 +247,12 @@
     }
   }
 
+  // máximo de personagens extras; 0 ou vazio = sem limite
+  function maxExtras() {
+    const max = Number(BASE.pedido?.maxExtras);
+    return max > 0 ? max : Infinity;
+  }
+
   function ativarPedido() {
     const form = $("#pedido-form");
     form.addEventListener("submit", (ev) => ev.preventDefault());
@@ -257,9 +263,8 @@
       if (name === "fundo") { pedido.fundo = value; atualizarResumo(); }
     });
     $("#pedido-ideia").addEventListener("input", () => atualizarResumo());
-    const max = () => Number(BASE.pedido?.maxExtras) || 5;
     $("#extras-menos").addEventListener("click", () => { pedido.extras = Math.max(0, pedido.extras - 1); atualizarResumo(); });
-    $("#extras-mais").addEventListener("click", () => { pedido.extras = Math.min(max(), pedido.extras + 1); atualizarResumo(); });
+    $("#extras-mais").addEventListener("click", () => { pedido.extras = Math.min(maxExtras(), pedido.extras + 1); atualizarResumo(); });
     $("#pedido-copiar").addEventListener("click", () => copiarPedido());
     // ao abrir o Telegram, também copia (caso o app não preencha a mensagem sozinho)
     $("#pedido-telegram").addEventListener("click", () => copiarPedido(true));

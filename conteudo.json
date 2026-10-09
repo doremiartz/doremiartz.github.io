@@ -132,7 +132,7 @@
     "titulo": "Quanto fica a sua arte?",
     "texto": "Escolha as opções e veja a estimativa na hora. No final, é só enviar o pedido pronto pelo Telegram ou copiar e colar onde preferir.",
     "pagamento": "Pix (Brasil) ou Revolut (outros países). 50% no rascunho e 50% na entrega.",
-    "maxExtras": 5
+    "maxExtras": 0
   },
   "avisos": {
     "titulo": "Avisos importantes",

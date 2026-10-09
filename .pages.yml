@@ -111,6 +111,16 @@ content:
               - { name: backgroundSimples, label: "Background simples (a partir de)", type: number }
               - { name: backgroundComplexo, label: "Background complexo (a partir de)", type: number }
 
+      - name: pedido
+        label: Monte seu pedido
+        type: object
+        fields:
+          - { name: etiqueta, label: Etiqueta, type: string }
+          - { name: titulo, label: Título, type: string }
+          - { name: texto, label: Texto, type: text }
+          - { name: pagamento, label: "Formas de pagamento (aparece no resumo do pedido)", type: string }
+          - { name: maxExtras, label: "Máximo de personagens extras (0 = sem limite)", type: number }
+
       - name: avisos
         label: Avisos
         type: object
@@ -127,6 +137,20 @@ content:
           - { name: naoFacoTitulo, label: "Título do quadro 'Não faço'", type: string }
           - { name: naoFaco, label: "Não faço (um item por linha)", type: string, list: true }
           - { name: adicionaisTitulo, label: "Título do quadro 'Adicionais' (os valores ficam em Preços → Adicionais)", type: string }
+
+      - name: faq
+        label: Perguntas frequentes
+        type: object
+        fields:
+          - { name: etiqueta, label: Etiqueta, type: string }
+          - { name: titulo, label: Título, type: string }
+          - name: perguntas
+            label: Perguntas
+            type: object
+            list: true
+            fields:
+              - { name: pergunta, label: Pergunta, type: string }
+              - { name: resposta, label: Resposta, type: text }
 
       - name: contato
         label: Contato
