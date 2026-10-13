@@ -7,7 +7,7 @@
     "imagemDescricao": "Personagem de cabelo azul segurando óculos em forma de estrela, pintura digital de DoremiArtz"
   },
   "comissoes": {
-    "abertas": false,
+    "abertas": true,
     "textoAberto": "Comissões abertas",
     "textoFechado": "Comissões fechadas"
   },
