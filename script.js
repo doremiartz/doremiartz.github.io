@@ -600,12 +600,14 @@
   /* ---------------- topo, menu ativo, fundo e inclinação ---------------- */
 
   const topo = $("#topo");
+  const papel = $(".papel-fundo");
   let pendente = false;
   const aoRolar = () => {
     pendente = false;
     const y = window.scrollY;
     topo.classList.toggle("rolado", y > 20);
-    if (!semMovimento) document.documentElement.style.setProperty("--py", `${-((y * 0.12) % 1200)}px`);
+    // muda só o papel de parede (mudar no <html> faria o navegador recalcular a página inteira a cada rolagem)
+    if (!semMovimento && papel) papel.style.setProperty("--py", `${-((y * 0.12) % 1200)}px`);
   };
   addEventListener("scroll", () => { if (!pendente) { pendente = true; requestAnimationFrame(aoRolar); } }, { passive: true });
   aoRolar();
@@ -654,9 +656,11 @@
     let pontos = [];               // {x, y, t}
     let faiscas = [];              // {x, y, vx, vy, vida, max, tam, giro, vg}
     let rodando = false, ultimo = 0, distancia = 0;
+    let leve = false;              // vira true se o computador não aguentar o efeito
+    const lentidao = [];           // duração dos últimos quadros, para perceber travamento
 
     const ajustar = () => {
-      const dpr = Math.min(devicePixelRatio || 1, 2);
+      const dpr = Math.min(devicePixelRatio || 1, 1.5);
       tela.width = innerWidth * dpr;
       tela.height = innerHeight * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -691,9 +695,26 @@
       ctx.restore();
     };
 
+    // se a animação ficar abaixo de ~30 quadros por segundo, desliga a luz e o rastro (fica só a pena)
+    const vigiar = (bruto) => {
+      lentidao.push(bruto);
+      if (lentidao.length > 40) lentidao.shift();
+      if (lentidao.length < 40) return;
+      const media = lentidao.reduce((s, v) => s + v, 0) / lentidao.length;
+      if (media > 34) {
+        leve = true;
+        pontos = []; faiscas = [];
+        ctx.clearRect(0, 0, innerWidth, innerHeight);
+        document.documentElement.classList.add("efeitos-leves");
+      }
+    };
+
     const desenhar = (agora) => {
-      const dt = Math.min(agora - (ultimo || agora), 50);
+      const bruto = agora - (ultimo || agora);
+      const dt = Math.min(bruto, 50);
+      if (ultimo && bruto < 500) vigiar(bruto);
       ultimo = agora;
+      if (leve) { rodando = false; ultimo = 0; return; }
       pontos = pontos.filter((p) => agora - p.t < DURACAO);
       ctx.clearRect(0, 0, innerWidth, innerHeight);
       ctx.globalCompositeOperation = "source-over";
@@ -719,20 +740,18 @@
           ctx.arc(fim.x, fim.y, raio, 0, Math.PI * 2);
           ctx.fill();
         };
-        ctx.shadowBlur = 18;
-        ctx.shadowColor = `rgba(${ROXO}, .95)`;
+        // brilho: uma fita mais larga e bem transparente por baixo (shadowBlur travava computadores mais fracos)
+        ctx.fillStyle = `rgba(${ROXO}, .16)`;
+        fita(1.9);
         ctx.fillStyle = `rgba(${ROXO}, .6)`;
         fita(0.9);
-        ctx.shadowBlur = 0;
         ctx.fillStyle = `rgba(${LILAS}, .9)`;
         fita(0.28);
 
         // o fio dourado que se enrola na fita e some junto com ela
         ctx.globalCompositeOperation = "lighter";
         ctx.lineCap = "butt";
-        ctx.lineWidth = 1.2;
-        ctx.shadowBlur = 6;
-        ctx.shadowColor = `rgba(${OURO}, .8)`;
+        ctx.lineWidth = 1.4;
         let antes = null;
         guia.forEach((g, i) => {
           const onda = Math.sin(g.t * 0.012 + i * 0.7) * (1 + 6 * g.k);
@@ -743,7 +762,6 @@
           }
           antes = atual;
         });
-        ctx.shadowBlur = 0;
       }
       ctx.globalCompositeOperation = "lighter";
 
@@ -755,12 +773,14 @@
         f.vx *= 0.97; f.vy = f.vy * 0.97 + 0.004 * dt;
         f.giro += f.vg;
         const vida = 1 - f.vida / f.max;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = `rgba(255, 185, 56, ${vida})`;
+        // halo suave no lugar do shadowBlur
+        ctx.fillStyle = `rgba(255, 185, 56, ${0.22 * vida})`;
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, f.tam * 2.2, 0, Math.PI * 2);
+        ctx.fill();
         ctx.fillStyle = `rgba(${OURO}, ${vida})`;
         estrela(f.x, f.y, f.tam * (0.6 + 0.4 * vida), f.giro);
       }
-      ctx.shadowBlur = 0;
 
       rodando = pontos.length > 0 || faiscas.length > 0;
       if (rodando) requestAnimationFrame(desenhar);
@@ -770,6 +790,7 @@
 
     return {
       ponto(x, y) {
+        if (leve) return;
         const anterior = pontos[pontos.length - 1];
         if (anterior) {
           distancia += Math.hypot(x - anterior.x, y - anterior.y);
@@ -781,6 +802,7 @@
         animar();
       },
       explosao(x, y) {
+        if (leve) return;
         for (let i = 0; i < 14; i++) novaFaisca(x, y, 2.2);
         animar();
       }
@@ -792,6 +814,7 @@
   const luz = $("#luz-cursor");
   const pena = $("#pena-cursor");
   if (mouseFino) {
+    const visor = $("#visor");
     let alvoX = innerWidth / 2, alvoY = innerHeight / 2;
     let x = alvoX, y = alvoY, escala = 1, alvoEscala = 1;
     let rodando = false;
@@ -809,7 +832,10 @@
       rodando = !parado;
       if (rodando) requestAnimationFrame(passo);
     };
-    const animar = () => { if (!rodando) { rodando = true; requestAnimationFrame(passo); } };
+    const animar = () => {
+      if (document.documentElement.classList.contains("efeitos-leves")) return;
+      if (!rodando) { rodando = true; requestAnimationFrame(passo); }
+    };
 
     // a pena fica exatamente na ponta do mouse (sem atraso)
     const moverPena = (px, py) => {
@@ -820,7 +846,7 @@
     addEventListener("pointermove", (ev) => {
       if (ev.pointerType !== "mouse") return;
       // proteção: se o visor fechou, a pena nunca pode ficar presa dentro dele
-      if (!$("#visor").open) devolverEfeitosMouse();
+      if (!visor.open) devolverEfeitosMouse();
       if (!luz.classList.contains("ativa")) { x = ev.clientX; y = ev.clientY; }
       alvoX = ev.clientX;
       alvoY = ev.clientY;

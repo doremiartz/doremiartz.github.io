@@ -42,8 +42,9 @@ body {
 }
 html, body { overflow-x: clip; }
 
-/* papel de parede com os rabiscos do artista + brilho magenta */
-body::before {
+/* papel de parede com os rabiscos do artista + brilho magenta
+   (é um elemento de verdade, e não body::before, para o script mover só ele ao rolar a página) */
+.papel-fundo {
   content: "";
   position: fixed;
   inset: 0 0 auto 0;
@@ -1052,6 +1053,7 @@ html.com-pena, html.com-pena * { cursor: none !important; }
   transform: translate3d(calc(var(--ax, -99px) - 3px), calc(var(--ay, -99px) - 3px), 0);
   transition: opacity .25s ease;
   filter: drop-shadow(0 0 6px rgba(155, 77, 255, .85)) drop-shadow(0 2px 3px rgba(0, 0, 0, .5));
+  will-change: transform;
 }
 .pena-cursor.ativa { opacity: 1; }
 .pena-cursor svg { width: 100%; height: 100%; overflow: visible; display: block; }
@@ -1078,8 +1080,10 @@ html.com-pena, html.com-pena * { cursor: none !important; }
   position: fixed; inset: 0; z-index: 99;
   width: 100vw; height: 100vh;
   pointer-events: none;
-  mix-blend-mode: screen;
 }
+
+/* em computadores que não aguentam os efeitos, o script liga o modo leve: sem luz e sem rastro */
+.efeitos-leves .luz-cursor, .efeitos-leves .rastro-cursor { display: none; }
 
 /* ---------- erro de carregamento ---------- */
 
@@ -1092,5 +1096,5 @@ html.com-pena, html.com-pena * { cursor: none !important; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; transition-duration: .01ms !important; }
   .hero-halo { stroke-dashoffset: 0; }
   .animar .revelar { opacity: 1; translate: none; }
-  body::before { transform: none; }
+  .papel-fundo { transform: none; }
 }
