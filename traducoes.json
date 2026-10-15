@@ -258,7 +258,7 @@
           { "titulo": "Cloudy field", "descricao": "Wolf character with purple streaks in tall grass, with power lines in the background" },
           { "titulo": "Sharp grin", "descricao": "Portrait of a black-furred character with a purple bow, grinning with sharp teeth and blood on the mouth" },
           { "titulo": "Beach day", "descricao": "White-furred character with magenta streaks pointing at the sea on a sunny beach" },
-          { "titulo": "Reference sheet: Brfoda", "descricao": "Reference sheet of a calico cat character with front and back views, color palette and expressions" }
+          { "titulo": "Reference sheet: Brfoda", "descricao": "Reference sheet of a calico cat character with front and back views, color palette and expressions", "itens": ["Flat Colors Fullbody", "Extra character", "3 Flat Colors Headshots", "Simple background", "Details and descriptions of your choice"] }
         ]
       },
       "processo": {
@@ -338,7 +338,7 @@
           { "titulo": "Campo nublado", "descricao": "Personaje lobo con mechones morados entre la hierba alta, con postes de luz al fondo" },
           { "titulo": "Sonrisa afilada", "descricao": "Retrato de un personaje de pelaje negro con un lazo morado, sonriendo con dientes afilados y sangre en la boca" },
           { "titulo": "Día de playa", "descricao": "Personaje de pelaje blanco con mechones magenta señalando el mar en una playa soleada" },
-          { "titulo": "Hoja de referencia: Brfoda", "descricao": "Hoja de referencia de un personaje gato calicó con vistas de frente y espalda, paleta de colores y expresiones" }
+          { "titulo": "Hoja de referencia: Brfoda", "descricao": "Hoja de referencia de un personaje gato calicó con vistas de frente y espalda, paleta de colores y expresiones", "itens": ["Flat Colors Fullbody", "Personaje extra", "3 Flat Colors Headshots", "Background simple", "Detalles y descripciones a gusto"] }
         ]
       },
       "processo": {

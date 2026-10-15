@@ -72,10 +72,17 @@
         "titulo": "Ficha de referência: Brfoda",
         "descricao": "Ficha de referência de um personagem gato calico com vistas de frente e costas, paleta de cores e expressões",
         "estilo": "Flat Colors",
-        "tamanho": "Fullbody",
+        "tamanho": "",
         "personagensExtras": 1,
         "background": "simples",
-        "precoManual": ""
+        "precoManual": "250",
+        "itens": [
+          "Flat Colors Fullbody",
+          "Personagem extra",
+          "3 Flat Colors Headshots",
+          "Background simples",
+          "Detalhes e descrições a gosto"
+        ]
       }
     ]
   },

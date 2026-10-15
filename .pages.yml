@@ -70,7 +70,8 @@ content:
                 type: select
                 options:
                   values: ["nenhum", "simples", "complexo"]
-              - { name: precoManual, label: "Preço manual (opcional; se preencher, substitui a estimativa. Ex.: R$ 150)", type: string }
+              - { name: precoManual, label: "Preço manual (opcional; substitui a estimativa. Só o número, ex.: 250, aparece como 'a partir de R$ 250')", type: string }
+              - { name: itens, label: "O que foi feito (opcional; um item por linha, substitui a conta embaixo da arte)", type: string, list: true }
 
       - name: processo
         label: Vídeo do processo

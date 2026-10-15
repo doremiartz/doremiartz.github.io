@@ -363,13 +363,19 @@
         const tipo = [o.estilo, o.tamanho].filter(Boolean).join(" · ");
         let etiqueta, conta = "";
         if (est?.manual) {
-          etiqueta = `<span class="estimativa-rotulo">${esc(t.estimativa)}</span><strong>${esc(est.manual)}</strong>`;
+          // só o número (ex.: "250") vira "a partir de R$ 250"; um texto (ex.: "R$ 150") aparece do jeito que foi escrito
+          const numero = String(est.manual).trim();
+          const valor = /^\d+([.,]\d+)?$/.test(numero) ? `<small>${esc(t.a_partir_de)}</small> ${esc(dinheiro(numero))}` : esc(est.manual);
+          etiqueta = `<span class="estimativa-rotulo">${esc(t.estimativa)}</span><strong>${valor}</strong>`;
         } else if (est) {
           etiqueta = `<span class="estimativa-rotulo">${esc(t.estimativa)}</span><strong>${est.aPartir ? `<small>${esc(t.a_partir_de)}</small> ` : "≈ "}${esc(dinheiro(est.total))}</strong>`;
           conta = est.partes.map((p) => `<span>${esc(rotuloParte(p))} <b>${esc(dinheiro(p.valor))}</b></span>`).join('<i aria-hidden="true">+</i>');
         } else {
           etiqueta = `<span class="estimativa-rotulo">${esc(t.estimativa)}</span><strong>${esc(t.sob_consulta)}</strong>`;
         }
+        // "o que foi feito" escrito na mão substitui a conta automática (sem valores separados)
+        const itens = (o.itens || []).filter(Boolean);
+        if (itens.length) conta = itens.map((it) => `<span>${esc(it)}</span>`).join('<i aria-hidden="true">+</i>');
         return `
       <figure class="obra revelar" style="transition-delay:${(i % 3) * 80}ms">
         <button class="obra-botao" type="button" data-grupo="galeria" data-indice="${i}" data-rotulo="${esc(t.ampliar)}" aria-label="${esc(preencher(t.ampliar_aria, { titulo: o.titulo }))}">

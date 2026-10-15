@@ -64,7 +64,8 @@ Abra `conteudo.json` no GitHub, clique no lápis (✏️), edite e clique em **C
 
 - **Preço estimado:** o site calcula sozinho com a tabela de preços: preço do estilo + tamanho, mais 70% por personagem extra, mais o background (`"nenhum"`, `"simples"` ou `"complexo"`). Se você mudar um preço na tabela, as estimativas mudam junto.
 - Se `estilo` não existir na tabela (ex.: `"Ref sheet"`), aparece **"sob consulta"**.
-- Para escrever um valor na mão, preencha `precoManual` (ex.: `"R$ 150"`). Ele substitui a estimativa.
+- Para escrever um valor na mão, preencha `precoManual`. Ele substitui a estimativa. Só o número (ex.: `"250"`) aparece como "a partir de R$ 250"; um texto (ex.: `"R$ 150"`) aparece do jeito que foi escrito.
+- Para escrever na mão o que foi feito na arte, use `"itens"` (ex.: `["Flat Colors Fullbody", "Personagem extra", "Background simples"]`). Os itens aparecem embaixo da arte separados por "+", sem valores, no lugar da conta automática. Para mostrar só o estilo (sem o tamanho) no texto rosa, deixe `"tamanho": ""`.
 - A galeria monta as linhas sozinha, deixando as artes de cada linha com a mesma altura. A ordem na lista é a ordem no site.
 
 **"Monte seu pedido":** usa a mesma tabela de preços e os mesmos adicionais, então não precisa configurar nada à parte. No painel, em **Monte seu pedido**, dá para mudar os textos, as formas de pagamento e o máximo de personagens extras (coloque 0 para não ter limite). O botão do Telegram usa o link do Telegram que está em **Contato → Redes**.
